@@ -1,1 +1,1 @@
-# This module lists all spells the player can use.
+# This module lists all spells the player/monsters can use.

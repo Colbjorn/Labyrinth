@@ -1,6 +1,9 @@
 # This module lists all the items and their relevant details.
+import itemeffects
 
 knife = {  # Sample item subject to change
+    "id": "knife",
+
     "name": "Knife",
 
     "type": "Weapon",
@@ -9,9 +12,9 @@ knife = {  # Sample item subject to change
 
     "usage": "equip",
 
-    "on use": equip(),  # TODO: Make an equip function for weapons/armor/whatever else we come up with!
+    "on use": itemeffects.equip, 
 
-    "damage": [1, 5], # [Min, max]
+    "damage": [1, 5],  # [Min, max]
 
     "cost": 10,
 
@@ -33,4 +36,6 @@ knife = {  # Sample item subject to change
 
 # It is of utmost importance that all dictionaries are saved within a list so that it is possible to call them
 # using an index or a loop!
-items = [knife]
+items = {
+    "knife": knife
+}

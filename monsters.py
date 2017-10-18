@@ -29,4 +29,6 @@ goblin = {  # Sample monster subject to change.
 
     "loot": []
 }
+
+# Important! In order for optimization to be implemented later on, keep the below list ordered by level.
 monsters = [goblin]
