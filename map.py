@@ -1,4 +1,4 @@
-from items import *
+# Stores the map. Room 1 is always the same. The other rooms are generated once the game begins.
 
 room_1 = {
     "name": "Labyrinth Entrance",
@@ -6,9 +6,9 @@ room_1 = {
     "description":
     """""",#tbd
 
-    "exits": {"north": "room_2"},
+    "exits": ["north"],
 
-    "items": [item_biscuits, item_handbook], #tbd
+    "items": [], #tbd
 
     "co-ordinates": [0, 0],
 
@@ -19,10 +19,9 @@ room_1 = {
     "interactables": "",
 
     "used": False,
+
+    "number": 1
     
 }
 
-rooms = {
-    "Labyrinth Entrance": room_1,
-    
-}
+rooms = [room_1]
