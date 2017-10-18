@@ -1,4 +1,6 @@
 # This module lists all monsters and their relevant details.
+import attacks
+from player import player
 
 goblin = {  # Sample monster subject to change.
     "name": "Goblin",
@@ -6,15 +8,23 @@ goblin = {  # Sample monster subject to change.
     "level": 1,
 
     # Monsters currently only store max health because of the TODO below.
-    "health": 15,  # TODO: Might be a good idea to have monster current health stored in the combat function.
+    "max health": 15,  # TODO: Might be a good idea to have monster current health stored in the combat function.
     # The above is in order to make it so new monsters always start at max health, and for easier tracking.
 
-    "mana": 0,
+    "max mana": 0,
 
-    "defense": 0,
+    "status effects": [],
 
-    "attacks": {  # TODO: Possibly have an entire file dedicated to attacks as they will all be functions.
-        "scratch": scratch_attack()
+    "strength": 0,
+
+    "dexterity": 0,
+
+    "constitution": 0,
+
+    "will": 0,
+
+    "attacks": {
+        "scratch": attacks.scratch_attack
     },
 
     "loot": []
