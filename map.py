@@ -12,7 +12,7 @@ room_1 = {
 
     "items": [], #tbd
 
-    "co-ordinates": [0, 0],
+    "co-ordinates": (0, 0),
 
     "monster": "",
 
@@ -26,4 +26,6 @@ room_1 = {
     
 }
 
-rooms = [room_1]
+rooms = {
+    (0, 0): room_1,
+}

@@ -27,7 +27,9 @@ goblin = {  # Sample monster subject to change.
         "scratch": attacks.scratch_attack
     },
 
-    "loot": []
+    "loot": [],
+
+    "experience": 10
 }
 
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.

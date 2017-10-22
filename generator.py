@@ -25,7 +25,7 @@ def make_room(co_ordinates):
 
         "number": len(rooms) + 1
     }
-    rooms.append(new_room)
+    rooms[tuple(co_ordinates)] = new_room
 
 
 def room_check(new_room_coordinates):
@@ -37,3 +37,6 @@ def room_check(new_room_coordinates):
             return False
 
 
+make_room([0, 1])
+print(rooms)
+print(rooms[(0, 1)])

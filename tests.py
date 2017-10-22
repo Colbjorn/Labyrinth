@@ -20,5 +20,5 @@ inpt = input("Use what?")
 if inpt not in player["inventory"]:
     print("Don't have that!")
 else:
-    items[inpt]["on use"](items[inpt])
+    items[inpt]["on use"]()
 print(player["weapon"])

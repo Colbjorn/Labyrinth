@@ -12,7 +12,10 @@ knife = {  # Sample item subject to change
 
     "usage": "equip",
 
-    "on use": itemeffects.equip, 
+    # The below function was adapted from user Tony Veijalainen in a StackOverflow forum. Reference:
+    # https://stackoverflow.com/questions/3738381/what-do-i-do-when-i-need-a-self-referential-dictionary
+    # Accessed on 20/10/2017 at 11:15.
+    "on use": lambda: itemeffects.equip(knife),
 
     "damage": [1, 5],  # [Min, max]
 

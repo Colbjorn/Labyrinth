@@ -14,6 +14,10 @@ player = {
 
     "mana": 10,
 
+    "level": 1,
+
+    "experience": 0,
+
     "status effects": [],  # e.g. poisoned, paralyzed, etc.
 
     # Revise stats, see if they make sense.
