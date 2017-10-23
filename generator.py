@@ -36,7 +36,8 @@ def room_check(new_room_coordinates):
         else:
             return False
 
-
+print(rooms([0, 1])["co-ordinates"])
 make_room([0, 1])
 print(rooms)
 print(rooms[(0, 1)])
+
