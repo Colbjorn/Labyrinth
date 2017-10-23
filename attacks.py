@@ -62,3 +62,8 @@ def summon_attack(self, target):
 
 def banter_attack(self, target):
     print(self["name"], " is annoying you with terrible banter. It does no damage, but you feel a loss in your will to live")
+
+def bite_attack(self, target):
+    damage = random.randint(2,6) + (self["attack"]*0.7)
+    target["health"] -= damage
+    print(self["name"], " is biting into part of you. You manage to shove them off")
