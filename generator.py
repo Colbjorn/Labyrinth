@@ -1,6 +1,21 @@
 import random
 from copy import copy
 from map import rooms
+from monsters import monsters
+from player import player
+
+
+def choose_monster(room):
+    # This function picks a monster from the list of monsters in monsters.py and adds it to the room taken as argument.
+    # Copy functions obtained from python documentation. Reference:
+    # https://docs.python.org/3/library/copy.html
+    monster_list = copy(monsters)
+    for i in monster_list:
+        if i["level"] > (player["level"] + 5):
+            monster_list.remove(i)
+        elif i["level"] < (player["level"] - 5):
+            monster_list.remove(i)
+    room["monster"] = random.choice(monster_list)
 
 
 def make_room(co_ordinates):
@@ -27,6 +42,7 @@ def make_room(co_ordinates):
 
         "number": len(rooms)+1
     }
+    choose_monster(new_room)
     rooms[tuple(co_ordinates)] = new_room
 
 
@@ -38,7 +54,8 @@ def room_check(new_room_coordinates):
         return False
 
 
-def rooms_create(co_ordinates):
+def create_rooms_around(co_ordinates):
+    # Creates rooms around the given coordinates, adding exits as appropriate and skipping rooms that already exist.
     north = copy(co_ordinates)
     north[1] += 1
     print(north)
@@ -82,5 +99,5 @@ def rooms_create(co_ordinates):
 
 make_room([0, 1])
 rooms[(0, 1)]["exits"].append("south")
-rooms_create([0, 1])
+create_rooms_around([0, 1])
 print(rooms)

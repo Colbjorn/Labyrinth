@@ -1,6 +1,6 @@
 # This module lists all monsters and their relevant details.
 import attacks
-from player import player
+
 
 goblin = {  # Sample monster subject to change.
     "name": "Goblin",
@@ -91,7 +91,7 @@ zombie = {
 
 orc = {
     
-    "name": "ORc",
+    "name": "Orc",
 
     "description": "",
 
@@ -136,7 +136,7 @@ ogre = {
 
 evil_unicorn = {
     
-    "name": "Evil Unicorn"
+    "name": "Evil Unicorn",
 
     "description": "",
 
@@ -170,14 +170,12 @@ gang_of_bandits = {
     "attacks": {
         "punch": attacks.punch_attack,
         "sword": attacks.sword_attack
-
     },
 
     "loot": [],
 
     "experience": 60
 }
-
 
 
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.
