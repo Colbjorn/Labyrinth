@@ -100,7 +100,7 @@ def execute_command(command):
         print("This makes no sense.")
 
 
-def update_location(direction)
+def update_location(direction):
 
 
 def menu(exits, room_items, inv_items):
@@ -127,7 +127,6 @@ def main():
     while playing:
         # Display game status (room description, inventory etc.)
         print_room(current_room)
-        print_inventory_items(inventory)
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
