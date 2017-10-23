@@ -21,13 +21,7 @@ player = {
     "status effects": [],  # e.g. poisoned, paralyzed, etc.
 
     # Revise stats, see if they make sense.
-    "strength": 5,  # Maybe could modify during a character creator?
-
-    "dexterity": 5,
-
-    "constitution": 5,
-
-    "will": 5,
+    "attack": 5,
 
     "weapon": None,
 

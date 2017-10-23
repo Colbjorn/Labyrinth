@@ -13,6 +13,8 @@ goblin = {  # Sample monster subject to change.
     "max health": 15,  # TODO: Might be a good idea to have monster current health stored in the combat function.
     # The above is in order to make it so new monsters always start at max health, and for easier tracking.
 
+    "attack": 0,
+
     "status effects": [],
 
     "attacks": {

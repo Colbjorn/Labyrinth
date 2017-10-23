@@ -7,14 +7,14 @@ from attacks import *
 from generator import *
 from monsters import *
 
-# Turns inputed list into a string of items.
+# Turns inputted list into a string of items.
 def list_of_items(items):
     hold = ""
     for i in items:
         hold += (str(i["name"]) + ", ")
     return hold.rstrip(", ")
 
-# Prints all of the items in an inputed room
+# Prints all of the items in an inputted room.
 def print_room_items(room):
     if room["items"]:
         print("There is " + list_of_items(room["items"]) + " here.")
