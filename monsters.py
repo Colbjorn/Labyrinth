@@ -136,7 +136,7 @@ ogre = {
 
 evil_unicorn = {
     
-    "name": "Evil Unicorn"
+    "name": "Evil Unicorn",
 
     "description": "",
 

@@ -41,16 +41,12 @@ def room_check(new_room_coordinates):
 def rooms_create(co_ordinates):
     north = copy(co_ordinates)
     north[1] += 1
-    print(north)
     east = copy(co_ordinates)
     east[0] += 1
-    print(east)
     south = copy(co_ordinates)
     south[1] -= 1
-    print(south)
     west = copy(co_ordinates)
     west[0] -= 1
-    print(west)
     rms = [north, east, west, south]
     for i in rms:
         if room_check(i):
@@ -78,9 +74,3 @@ def rooms_create(co_ordinates):
             rooms[tuple(co_ordinates)]["exits"].append("west")
         else:
             print("Invalid exit created.")
-
-
-make_room([0, 1])
-rooms[(0, 1)]["exits"].append("south")
-rooms_create([0, 1])
-print(rooms)
