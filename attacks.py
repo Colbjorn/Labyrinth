@@ -1,10 +1,12 @@
 # This module lists all attacks and spells monsters/the player can use.
 import random
+from items import * #allows fetching damage of player's items from different file
+from player import * #allows fetching player's current weapon
 
-#self = enemy dictionary
-#target = player dictionary
+# self = enemy dictionary
+# target = player dictionary
 
-
+##### ENEMY ATTACKS #####
 def scratch_attack(self, target):
     damage = random.randint(1, 3) + (self["attack"]*0.5)
     target["health"] -= damage
@@ -73,3 +75,10 @@ def rainbow_attack(self, target):
     damage = random.randint(3,7) + (self["attack"]*0.5)
     target["health"] -= damage
     print(self["name"], " is firing the power of rainbows to ", target["name"], "! They've taken ", damage, " damage. Don't do drugs kids!")
+
+##### PLAYER ATTACKS #####
+def p_attack(self, target, weapon):
+    # lookup weapon name passed to function on items.py and retrieve it's name and minimum/maximum damage
+    damage = items[weapon["damage"]] + (self["attack"]*items[weapon["bonus"]])
+    target["health"] -= damage
+    print(self["name"], " is ", items[weapon["action"]], " ", target["name"], " with ", items[weapon["name"]], "!")
