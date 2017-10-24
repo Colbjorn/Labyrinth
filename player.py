@@ -1,5 +1,4 @@
 # Tracks player's stats.
-
 player = {
     "name": "Captain Placeholder",  # Inputted by player at start of game.
 
@@ -27,11 +26,11 @@ player = {
 
     "defense": 0,
 
-    "weapon": None,
+    "weapon": "fists",
 
-    "armor": None,
+    "armor": "no armor",
 
-    "inventory": ["knife"],
+    "inventory": ("knife"),  # Simply add in item objects imported from items.py.
 
     "spells": []
 }

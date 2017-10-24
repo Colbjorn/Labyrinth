@@ -1,27 +1,30 @@
 # Main game code.
 from map import rooms
 from gameparser import *
-from player import *
+from player import player
 from items import *
 from attacks import *
 from generator import *
 from monsters import *
 playing = True
 
+
 # Turns inputted list into a string of items.
 def list_of_items(items):
     hold = ""
-    for i in items:
-        hold += (str(i["name"]) + ", ")
+    print(items)
+    for item in items:
+        print(hold)
+        print(item["name"])
+        hold += (str(item["name"]) + ", ")
+        print(hold)
     return hold.rstrip(", ")
-
 
 # Prints all of the items in an inputted room.
 def print_room_items(room):
     if room["items"]:
         print("There is " + list_of_items(room["items"]) + " here.")
         print()
-
 
 def print_room(room):
     print()
@@ -31,22 +34,17 @@ def print_room(room):
     # Display room description
     print(room["description"])
     print()
-    # Display room monster
-
-    # Display room items
+    # Display room items3
     print_room_items(room)
-    # Display room interactables
-    '''
-            CODE THAT WILL DISPLAY THE DESCRIPTION OF AN INTERACTABLE
-'''
 
 
-def exit_leads_to(exits, direction):
-    return rooms[exits[direction]]["name"]
+def print_inventory_items(items):
+    print("you have " + list_of_items(items) + ".")
+    print()
 
 
-def print_exit(direction, leads_to):
-    print("GO " + direction.upper() + " to " + leads_to + ".")
+def print_exit(direction):
+    print("GO " + direction.upper())
 
 
 def print_menu(exits, room_items, inv_items):
@@ -54,11 +52,11 @@ def print_menu(exits, room_items, inv_items):
     # Iterate over available exits
     for direction in exits:
         # Print the exit name and where it leads to
-        print_exit(direction, exit_leads_to(exits, direction))
-    for i in room_items:
-        print("TAKE " + str(i["id"]) + " to take " + str(i["name"]) + ".")
-    for i in inv_items:
-        print("DROP " + str(i["id"]) + " to drop your " + str(i["name"]) + ".")
+        print_exit(direction)
+#    for i in room_items:
+#        print("TAKE " + str(i["id"]) + " to take " + str(i["name"]) + ".")
+#    for i in inv_items:
+#        print("DROP " + str(i["id"]) + " to drop your " + str(i["name"]) + ".")
     print("What do you want to do?")
 
 
@@ -67,9 +65,13 @@ def is_valid_exit(exits, chosen_exit):
 
 
 def execute_go(direction):
-    global current_room
-    if is_valid_exit(current_room["exits"], direction):
-        current_room = rooms[current_room["exits"][direction]]
+    if is_valid_exit(rooms[tuple(player["location"])]["exits"], direction):
+        move(direction, player["location"])
+        print(player["location"])
+        if not rooms[tuple(player["location"])]["entered"]:
+            rooms_create_around(player["location"])
+            rooms[tuple(player["location"])]["entered"] =  True
+        print(rooms[tuple(player["location"])]["entered"])
     else:
         print("You cannot go there.")
 
@@ -100,10 +102,6 @@ def execute_command(command):
         print("This makes no sense.")
 
 
-def update_location(direction):
-    pass
-
-
 def menu(exits, room_items, inv_items):
     # Display menu
     print_menu(exits, room_items, inv_items)
@@ -117,9 +115,17 @@ def menu(exits, room_items, inv_items):
     return normalised_user_input
 
 
-def move(exits, direction):
-    # Next room to go to
-    return rooms[exits[direction]]
+def move(direction, co_ordinates):
+    # changes player coords to next room
+    print(co_ordinates)
+    if direction == "north":
+        co_ordinates[1] += 1
+    elif direction == "east":
+        co_ordinates[0] += 1
+    elif direction == "south":
+        co_ordinates[1] -= 1
+    elif direction == "west":
+        co_ordinates[0] -= 1
 
 
 def combat_menu(monster):
@@ -167,13 +173,22 @@ def initiate_combat(monster):
 
 
 def main():
+    make_room([0, 1])
+    rooms[(0, 1)]["exits"].append("south")
+
+
     # Main game loop
     while playing:
         # Display game status (room description, inventory etc.)
-        print_room(current_room)
+        print_room(rooms[tuple(player["location"])])
+        #print_inventory_items(player["inventory"])
 
         # Show the menu with possible actions and ask the player
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        current_room = rooms[tuple(player["location"])]
+        command = menu(current_room["exits"], current_room["items"], player["inventory"])
 
         # Execute the player's command
         execute_command(command)
+
+if __name__ == "__main__":
+    main()

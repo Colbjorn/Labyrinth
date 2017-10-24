@@ -17,13 +17,17 @@ goblin = {  # Sample monster subject to change.
 
     "status effects": [],
 
-    "attacks": [attacks.scratch_attack],
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.doubleslap_attack,
+        attacks.fiveslap_attack,
+    ],
 
     "loot": [],
 
     "experience": 20,
 
-    "gold": 5
+    "gold": 5,
 }
 
 skeleton = {
@@ -42,6 +46,9 @@ skeleton = {
     "attacks": [
         attacks.scratch_attack,
         attacks.stun_attack,
+        attacks.sword_attack,
+        attacks.banter_attack,
+        attacks.summon_attack,
     ],
 
     "loot": [],
@@ -61,15 +68,22 @@ slime = {
 
     "max health": 5,
 
+    "attack": 2,
+
     "status_effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack
-    },
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.summon_attack,
+        attacks.stomp_attack,
+        attacks.spit_acid_attack,
+    ],
 
     "loot": [],
 
-    "experience": 10
+    "experience": 10,
+
+    "gold": 4,
 }
 
 zombie = {
@@ -82,15 +96,21 @@ zombie = {
 
     "max health": 20,
 
+    "attack": 4,
+
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+    ],
 
     "loot": [],
 
-    "experience": 25
+    "experience": 25,
+
+    "gold": 8,
 }
 
 orc = {
@@ -103,16 +123,24 @@ orc = {
 
     "max health": 12,
 
+    "attack": 4,
+
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "sword": attacks.sword_attack
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.sword_attack,
+        attacks.scratch_attack,
+        attacks.doubleslap_attack,
+        attacks.fiveslap_attack,
+        attacks.scream_attack,
+    ],
 
     "loot": [],
 
-    "experience": 30
+    "experience": 30,
+
+    "gold": 8,
 }
 
 ogre = {
@@ -125,17 +153,22 @@ ogre = {
 
     "max health": 20,
 
+    "attack": 5,
+
     "status_effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack,
-        "stun": attacks.stun_attack,
-        "punch": attacks.punch_attack
-    },
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.stun_attack,
+        attacks.punch_attack,
+        attacks.scream_attack,
+    ],
 
     "loot": [],
 
-    "experience": 35
+    "experience": 35,
+
+    "gold": 10,
 }
 
 evil_unicorn = {
@@ -148,15 +181,22 @@ evil_unicorn = {
 
     "max health": 25,
 
+    "attack": 5,
+
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.rainbow_attack,
+        attacks.bite_attack,
+        attacks.spit_acid_attack,
+    ],
 
     "loot": [],
 
-    "experience": 30
+    "experience": 30,
+
+    "gold": 10,
 }
 
 gang_of_bandits = {
@@ -169,18 +209,124 @@ gang_of_bandits = {
 
     "max health": 45,
 
+    "attack": 6,
+
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "sword": attacks.sword_attack
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.sword_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.doubleslap_attack,
+        attacks.fiveslap_attack,
+        attacks.banter_attack,
+    ],
 
     "loot": [],
 
-    "experience": 60
+    "experience": 60,
+
+    "gold": 15,
+}
+
+devil_cat = {
+
+    "name": "The Devil's Cat",
+
+    "description": "All the things you wished your cat wouldn't do.",
+
+    "level": 6,
+
+    "max health": 40,
+
+    "attack": 6,
+
+    "status_effects": [],
+
+    "attacks": [
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.summon_attack,
+        attacks.scream_attack,
+        attacks.spit_fire_attack,
+        attacks.tail_attack,
+        attacks.banter_attack,
+    ],
+
+    "loot": [],
+
+    "experience": 60,
+
+    "gold": 15,
+}
+
+dragon = {
+
+    "name": "Dragon",
+
+    "description": "It's a dragon! I'd recommend running, but that command doesn't exist.",
+
+    "level": 5,
+
+    "max health": 100,
+
+    "attack": 9,
+
+    "status_effects": [],
+
+    "attacks": [
+        attacks.punch_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.stomp_attack,
+        attacks.spit_acid_attack,
+        attacks.spit_fire_attack,
+        attacks.tail_attack,
+        attacks.summon_attack,
+        attacks.scream_attack,
+    ],
+
+    "loot": [],
+
+    "experience": 100,
+
+    "gold": 20,
+}
+
+giant_dragon = {
+
+    "name": "Giant Dragon",
+
+    "description": "It's a giant dragon! Yeah, I'd certainly try running now, if that command existed...",
+
+    "level": 10,
+
+    "max health": 160,
+
+    "attack": 20,
+
+    "status_effects": [],
+
+    "attacks": [
+        attacks.punch_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.stomp_attack,
+        attacks.spit_acid_attack,
+        attacks.spit_fire_attack,
+        attacks.tail_attack,
+        attacks.summon_attack,
+        attacks.scream_attack,
+    ],
+
+    "loot": [],
+
+    "experience": 200,
+
+    "gold": 30,
 }
 
 
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.
-monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits]
+monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits, devil_cat, dragon, giant_dragon]

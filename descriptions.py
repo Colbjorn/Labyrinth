@@ -77,13 +77,50 @@ room_mountain = {
        with blood. Then you see a man looking at you then ignores you and walk. """
 }
 room_acid = {
-    "name": "Acid room",
-
-    "descripttion":
-    """"""
+    "name": "Acid room"
+    "descripttion"
+    """You are leaning against the wall and you see a door which has a lot of smokes
+       coming out from the room. You see a doctor with an burnt face holding an acid
+       and looking at you. """
 
 }
 
+room_disco = {
+    "name": "Disco room"
+    "description"
+    """You are now on the dance floor and you see the lights swtching on and off with
+       different colours. Next to you, you can see black creatures dancing on the disco
+       floor. """
+}
+
+room_lava = {
+    "name": "Under Lava room"
+    "description"
+    """You are standing under the lava protected by a magical power. As you walk further
+       you can see your reflection on the lava.  """
+}
+
+room_ocean = {
+    "name": "Ocean room"
+    "description"
+    """ You are in the boat and the boat is in the middle of the ocean. The view looks
+        awesome with clear bright blue sky. A lion comes out of the ocean and goes to the
+        otherside of the boat. As soon as you see them lion, the sky turns red.  """
+}
+
+room_planet = {
+    "name": "Twinkle Planet"
+    "description"
+    """You are standing on top of this tiny little planet. This planet can only take
+       your weight as if any additional weight has been put on this planet, it can explode.
+       In this room, you can see bright stars with black background.  """
+}
+
+room_magician = {
+    "name": "Magician room"
+    "description"
+    """   """
+}
 
 
 rooms = {
@@ -91,6 +128,10 @@ rooms = {
 
 
 }
+
+#under lava
+#middle of the ocean with a lion on the boat
+#Twinkle planet
 
 
 #dark and stormtrooper
