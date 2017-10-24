@@ -25,9 +25,9 @@ player = {
 
     "defense": 0,
 
-    "weapon": None,
+    "weapon": "fists",
 
-    "armor": None,
+    "armor": "no armor",
 
     "inventory": ["knife"],
 

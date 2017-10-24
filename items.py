@@ -85,7 +85,7 @@ leather_armor = {
 # It is of utmost importance that all dictionaries are saved within a list so that it is possible to call them
 # using an index or a loop!
 items = {
-    "no weapon": no_weapon,
+    "fists": no_weapon,
 
     "no armor": no_armor,
 
