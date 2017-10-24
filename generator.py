@@ -60,6 +60,7 @@ def rooms_create_around(co_ordinates):
         rms.remove(rm)
         rm_num -= 1
         make_room(rm)
+        print(rooms[tuple(co_ordinates)]["exits"])
         if rm == north:
             rooms[tuple(rm)]["exits"].append("south")
             rooms[tuple(co_ordinates)]["exits"].append("north")

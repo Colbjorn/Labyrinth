@@ -64,12 +64,10 @@ def is_valid_exit(exits, chosen_exit):
 
 def execute_go(direction):
     if is_valid_exit(rooms[tuple(player["location"])]["exits"], direction):
-        print(direction)
-        print(player["location"][0])
-        print(player["location"][1])
         move(direction, player["location"])
         print(player["location"])
-        rooms_create(player["location"])
+        rooms_create_around(player["location"])
+        rooms[tuple(player["location"])]["entered"] =  True
     else:
         print("You cannot go there.")
 
@@ -128,6 +126,7 @@ def move(direction, co_ordinates):
 
 def main():
     playing = True
+    make_room([0, 1])
     # Main game loop
     while playing:
         # Display game status (room description, inventory etc.)
