@@ -14,6 +14,7 @@ def equip(item):
                 player["inventory"].add(player["armor"])
             player["armor"] = item["id"]
             player["inventory"].remove(item["id"])
+            player["defense"] = item["defense"]
         else:
             print("Cannot equip that!")
     else:

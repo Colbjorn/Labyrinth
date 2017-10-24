@@ -58,16 +58,12 @@ def create_rooms_around(co_ordinates):
     # Creates rooms around the given coordinates, adding exits as appropriate and skipping rooms that already exist.
     north = copy(co_ordinates)
     north[1] += 1
-    print(north)
     east = copy(co_ordinates)
     east[0] += 1
-    print(east)
     south = copy(co_ordinates)
     south[1] -= 1
-    print(south)
     west = copy(co_ordinates)
     west[0] -= 1
-    print(west)
     rms = [north, east, west, south]
     for i in rms:
         if room_check(i):

@@ -23,6 +23,8 @@ player = {
     # Revise stats, see if they make sense.
     "attack": 5,
 
+    "defense": 0,
+
     "weapon": None,
 
     "armor": None,
