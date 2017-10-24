@@ -22,3 +22,7 @@ if inpt not in player["inventory"]:
 else:
     items[inpt]["on use"]()
 print(player["weapon"])
+
+lst = [0, 1]
+lst[0] += 1
+print(len(lst))
