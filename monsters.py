@@ -231,6 +231,39 @@ gang_of_bandits = {
     "gold": 15,
 }
 
+ninja = {
+
+    "name": "Ninja",
+
+    "description": "A real ninja! From one of the finest training grounds, apparently.",
+
+    "level": 4,
+
+    "max health": 50,
+
+    "attack": 0.6,
+
+    "status_effects": [],
+
+    "attacks": {
+        "punch": attacks.punch_attack,
+        "sword": attacks.sword_attack,
+        "bite": attacks.bite_attack,
+        "scratch": attacks.scratch_attack,
+        "2slap": attacks.doubleslap_attack,
+        "5slap": attacks.fiveslap_attack,
+        "scream": attacks.scream_attack,
+        "summon": attacks.summon_attack,
+        "stomp": attacks.stomp_attack,
+    },
+
+    "loot": [],
+
+    "experience": 60,
+
+    "gold": 18,
+}
+
 devil_cat = {
 
     "name": "The Devil's Cat",
@@ -330,4 +363,4 @@ giant_dragon = {
 
 
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.
-monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits, devil_cat, dragon, giant_dragon]
+monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits, ninja, devil_cat, dragon, giant_dragon]
