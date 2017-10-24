@@ -63,7 +63,7 @@ def spit_fire_attack(self, target):
     print(self["name"], "is spitting fire at", target["name"], "! They've taken", damage, "damage.")
 
 def stomp_attack(self, target):
-    damage = random.randint(1,6) + (self["attack"]*0.8) #will change dramatically based on level/monster size
+    damage = random.randint(1,6) + (self["attack"]*0.8)
     target["health"] -= damage
     print(self["name"], "has stomped", target["name"], "into the ground! They've taken", damage, "damage.")
 
