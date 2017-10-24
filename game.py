@@ -66,8 +66,10 @@ def execute_go(direction):
     if is_valid_exit(rooms[tuple(player["location"])]["exits"], direction):
         move(direction, player["location"])
         print(player["location"])
-        rooms_create_around(player["location"])
-        rooms[tuple(player["location"])]["entered"] =  True
+        if not rooms[tuple(player["location"])]["entered"]:
+            rooms_create_around(player["location"])
+            rooms[tuple(player["location"])]["entered"] =  True
+        print(rooms[tuple(player["location"])]["entered"])
     else:
         print("You cannot go there.")
 
@@ -127,6 +129,9 @@ def move(direction, co_ordinates):
 def main():
     playing = True
     make_room([0, 1])
+    rooms[(0, 1)]["exits"].append("south")
+
+    
     # Main game loop
     while playing:
         # Display game status (room description, inventory etc.)
