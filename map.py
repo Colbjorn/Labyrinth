@@ -6,7 +6,7 @@ room_1 = {
     "name": "Labyrinth Entrance",
 
     "description":
-    """""",#tbd
+    """DESCRIPTION HERE""",#tbd
 
     "exits": ["north"],
 
