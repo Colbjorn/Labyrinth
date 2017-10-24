@@ -244,17 +244,17 @@ ninja = {
 
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "sword": attacks.sword_attack,
-        "bite": attacks.bite_attack,
-        "scratch": attacks.scratch_attack,
-        "2slap": attacks.doubleslap_attack,
-        "5slap": attacks.fiveslap_attack,
-        "scream": attacks.scream_attack,
-        "summon": attacks.summon_attack,
-        "stomp": attacks.stomp_attack,
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.sword_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.doubleslap_attack,
+        attacks.fiveslap_attack,
+        attacks.scream_attack,
+        attacks.summon_attack,
+        attacks.stomp_attack,
+    ],
 
     "loot": [],
 
