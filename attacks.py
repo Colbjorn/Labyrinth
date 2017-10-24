@@ -52,10 +52,15 @@ def fiveslap_attack(self, target): # either implement 5 times or modify health
         print(self["name"], "is giving", target["name"], "a slap! They've taken", damage, "damage.")
     print(self["name"], "gave", target["name"], "a quintuple slap!")
 
-def spit_attack(self, target):
+def spit_acid_attack(self, target):
     damage = random.randint(2,4) + (self["attack"]*0.5)
     target["health"] -= damage
     print(self["name"], "is spitting acid at", target["name"], "! They've taken", damage, "damage.")
+
+def spit_fire_attack(self, target):
+    damage = random.randint(4,9) + (self["attack"]*0.8)
+    target["health"] -= damage
+    print(self["name"], "is spitting fire at", target["name"], "! They've taken", damage, "damage.")
 
 def stomp_attack(self, target):
     damage = random.randint(1,6) + (self["attack"]*0.8) #will change dramatically based on level/monster size
