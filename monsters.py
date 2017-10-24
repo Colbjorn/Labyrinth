@@ -1,11 +1,11 @@
 # This module lists all monsters and their relevant details.
 import attacks
-from player import player
+
 
 goblin = {  # Sample monster subject to change.
     "name": "Goblin",
 
-    "description": "",
+    "description": "An ugly green creature.",
 
     "level": 1,
 
@@ -29,7 +29,7 @@ goblin = {  # Sample monster subject to change.
 skeleton = {
     "name": "Skeleton",
 
-    "description": "",
+    "description": "Could do with gaining a few pounds.",
 
     "level": 1,
 
@@ -51,7 +51,7 @@ slime = {
     
     "name": "Slime",
 
-    "description": "",
+    "description": "A foul-smelling blob of protoplasm.",
 
     "level": 1,
 
@@ -72,7 +72,7 @@ zombie = {
     
     "name": "Zombie",
 
-    "description": "",
+    "description": "A shambling pile of rotten flesh.",
 
     "level": 2,
 
@@ -91,9 +91,9 @@ zombie = {
 
 orc = {
     
-    "name": "ORc",
+    "name": "Orc",
 
-    "description": "",
+    "description": "A goblin with too much testosterone.",
 
     "level": 2,
 
@@ -115,7 +115,7 @@ ogre = {
     
     "name": "Ogre",
 
-    "description": "",
+    "description": "A large dim looking humanoid.",
 
     "level": 2,
 
@@ -138,7 +138,7 @@ evil_unicorn = {
     
     "name": "Evil Unicorn",
 
-    "description": "",
+    "description": "A unicorn with a blackened heart.",
 
     "level": 3,
 
@@ -159,7 +159,7 @@ gang_of_bandits = {
     
     "name": "Gang of Bandits",
 
-    "description": "",
+    "description": "A gang of tough-looking criminals.",
 
     "level": 3,
 
@@ -170,14 +170,12 @@ gang_of_bandits = {
     "attacks": {
         "punch": attacks.punch_attack,
         "sword": attacks.sword_attack
-
     },
 
     "loot": [],
 
     "experience": 60
 }
-
 
 
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.

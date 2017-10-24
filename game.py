@@ -113,17 +113,17 @@ def menu(exits, room_items, inv_items):
     return normalised_user_input
 
 
-def move(direction, coordinates):
+def move(direction, co_ordinates):
     # changes player coords to next room
-    print(coordinates)
+    print(co_ordinates)
     if direction == "north":
-        coordinates[1] += 1
+        co_ordinates[1] += 1
     elif direction == "east":
-        coordinates[0] += 1
+        co_ordinates[0] += 1
     elif direction == "south":
-        coordinates[1] -= 1
+        co_ordinates[1] -= 1
     elif direction == "west":
-        coordinates[0] -= 1
+        co_ordinates[0] -= 1
 
 
 def main():

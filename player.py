@@ -28,5 +28,5 @@ player = {
 
     "inventory": ("knife"),  # Simply add in item objects imported from items.py.
 
-    "spells": []  # Same as items.
+    "spells": []
 }

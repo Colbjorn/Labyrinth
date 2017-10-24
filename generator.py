@@ -38,7 +38,7 @@ def room_check(new_room_coordinates):
         return False
 
 
-def rooms_create(co_ordinates):
+def rooms_create_around(co_ordinates):
     north = copy(co_ordinates)
     north[1] += 1
     east = copy(co_ordinates)

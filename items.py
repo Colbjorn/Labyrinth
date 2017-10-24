@@ -16,25 +16,16 @@ knife = {  # Sample item subject to change
     # https://stackoverflow.com/questions/3738381/what-do-i-do-when-i-need-a-self-referential-dictionary
     # Accessed on 20/10/2017 at 11:15.
     "on use": lambda: itemeffects.equip(knife),
+    # End reference.
 
     "damage": [1, 5],  # [Min, max]
 
     "cost": 10,
 
-    "requirement": {
-        "strength": 0,
-        "dexterity": 0,
-        "constitution": 0,
-        "will": 0
-    },
+    "requirement": 0,  # Level requirement. MAY BE UNNECESSARY!
 
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
-    "bonuses": {
-        "strength": 0.2,
-        "dexterity": 0.7,
-        "constitution": 0,
-        "will": 0
-    }
+    "bonus": 0.5
 }
 
 # It is of utmost importance that all dictionaries are saved within a list so that it is possible to call them
