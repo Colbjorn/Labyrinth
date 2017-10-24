@@ -13,15 +13,15 @@ goblin = {  # Sample monster subject to change.
     "max health": 15,  # TODO: Might be a good idea to have monster current health stored in the combat function.
     # The above is in order to make it so new monsters always start at max health, and for easier tracking.
 
-    "attack": 0.3,
+    "attack": 0,
 
     "status effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack,
-        "doubleslap": attacks.doubleslap_attack,
-        "5slap": attacks.fiveslap_attack,
-    },
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.doubleslap_attack,
+        attacks.fiveslap_attack,
+    ],
 
     "loot": [],
 
@@ -39,23 +39,23 @@ skeleton = {
 
     "max health": 8,
 
-    "attack": 0.3,
+    "attack": 2,
 
     "status effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack,
-        "stun": attacks.stun_attack,
-        "sword": attacks.sword_attack,
-        "banter": attacks.banter_attack,
-        "summon": attacks.summon_attack,
-    },
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.stun_attack,
+        attacks.sword_attack,
+        attacks.banter_attack,
+        attacks.summon_attack,
+    ],
 
     "loot": [],
 
     "experience": 15,
 
-    "gold": 5,
+    "gold": 10
 }
 
 slime = {
@@ -68,16 +68,16 @@ slime = {
 
     "max health": 5,
 
-    "attack": 0.2,
+    "attack": 2,
 
     "status_effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack,
-        "summon": attacks.summon_attack,
-        "stomp": attacks.stomp_attack,
-        "spit_a": attacks.spit_acid_attack,
-    },
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.summon_attack,
+        attacks.stomp_attack,
+        attacks.spit_acid_attack,
+    ],
 
     "loot": [],
 
@@ -96,15 +96,15 @@ zombie = {
 
     "max health": 20,
 
-    "attack": 0.4,
+    "attack": 4,
 
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "bite": attacks.bite_attack,
-        "scratch": attacks.scratch_attack,
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+    ],
 
     "loot": [],
 
@@ -123,19 +123,18 @@ orc = {
 
     "max health": 12,
 
-    "attack": 0.4,
+    "attack": 4,
 
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "sword": attacks.sword_attack,
-        "scratch": attacks.scratch_attack,
-        "2slap": attacks.doubleslap_attack,
-        "5slap": attacks.fiveslap_attack,
-        "scream": attacks.scream_attack,
-
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.sword_attack,
+        attacks.scratch_attack,
+        attacks.doubleslap_attack,
+        attacks.fiveslap_attack,
+        attacks.scream_attack,
+    ],
 
     "loot": [],
 
@@ -154,16 +153,16 @@ ogre = {
 
     "max health": 20,
 
-    "attack": 0.5,
+    "attack": 5,
 
     "status_effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack,
-        "stun": attacks.stun_attack,
-        "punch": attacks.punch_attack,
-        "scream": attacks.scream_attack,
-    },
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.stun_attack,
+        attacks.punch_attack,
+        attacks.scream_attack,
+    ],
 
     "loot": [],
 
@@ -182,16 +181,16 @@ evil_unicorn = {
 
     "max health": 25,
 
-    "attack": 0.5,
+    "attack": 5,
 
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "rainbow": attacks.rainbow_attack,
-        "bite": attacks.bite_attack,
-        "spit_a": attacks.spit_acid_attack,
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.rainbow_attack,
+        attacks.bite_attack,
+        attacks.spit_acid_attack,
+    ],
 
     "loot": [],
 
@@ -210,19 +209,19 @@ gang_of_bandits = {
 
     "max health": 45,
 
-    "attack": 0.6,
+    "attack": 6,
 
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "sword": attacks.sword_attack,
-        "bite": attacks.bite_attack,
-        "scratch": attacks.scratch_attack,
-        "2slap": attacks.doubleslap_attack,
-        "5slap": attacks.fiveslap_attack,
-        "banter": attacks.banter_attack,
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.sword_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.doubleslap_attack,
+        attacks.fiveslap_attack,
+        attacks.banter_attack,
+    ],
 
     "loot": [],
 
@@ -274,19 +273,19 @@ devil_cat = {
 
     "max health": 40,
 
-    "attack": 0.6,
+    "attack": 6,
 
     "status_effects": [],
 
-    "attacks": {
-        "bite": attacks.bite_attack,
-        "scratch": attacks.scratch_attack,
-        "summon": attacks.summon_attack,
-        "scream": attacks.scream_attack,
-        "spit_f": attacks.spit_fire_attack,
-        "tail": attacks.tail_attack,
-        "banter": attacks.banter_attack,
-    },
+    "attacks": [
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.summon_attack,
+        attacks.scream_attack,
+        attacks.spit_fire_attack,
+        attacks.tail_attack,
+        attacks.banter_attack,
+    ],
 
     "loot": [],
 
@@ -305,21 +304,21 @@ dragon = {
 
     "max health": 100,
 
-    "attack": 0.9,
+    "attack": 9,
 
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "bite": attacks.bite_attack,
-        "scratch": attacks.scratch_attack,
-        "stomp": attacks.stomp_attack,
-        "spit_a": attacks.spit_acid_attack,
-        "spit_f": attacks.spit_fire_attack,
-        "tail": attacks.tail_attack,
-        "summon": attacks.summon_attack,
-        "scream": attacks.scream_attack,
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.stomp_attack,
+        attacks.spit_acid_attack,
+        attacks.spit_fire_attack,
+        attacks.tail_attack,
+        attacks.summon_attack,
+        attacks.scream_attack,
+    ],
 
     "loot": [],
 
@@ -338,21 +337,21 @@ giant_dragon = {
 
     "max health": 160,
 
-    "attack": 1.2,
+    "attack": 20,
 
     "status_effects": [],
 
-    "attacks": {
-        "punch": attacks.punch_attack,
-        "bite": attacks.bite_attack,
-        "scratch": attacks.scratch_attack,
-        "stomp": attacks.stomp_attack,
-        "spit_a": attacks.spit_acid_attack,
-        "spit_f": attacks.spit_fire_attack,
-        "tail": attacks.tail_attack,
-        "summon": attacks.summon_attack,
-        "scream": attacks.scream_attack,
-    },
+    "attacks": [
+        attacks.punch_attack,
+        attacks.bite_attack,
+        attacks.scratch_attack,
+        attacks.stomp_attack,
+        attacks.spit_acid_attack,
+        attacks.spit_fire_attack,
+        attacks.tail_attack,
+        attacks.summon_attack,
+        attacks.scream_attack,
+    ],
 
     "loot": [],
 

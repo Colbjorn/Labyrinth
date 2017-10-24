@@ -1,6 +1,6 @@
 # Tracks player's stats.
 player = {
-    "name": "",  # Inputted by player at start of game.
+    "name": "Captain Placeholder",  # Inputted by player at start of game.
 
     # TODO: Make sure the following are printed every turn.
     "location": [0, 0],
@@ -16,6 +16,8 @@ player = {
     "level": 1,
 
     "experience": 0,
+
+    "gold": 0,
 
     "status effects": [],  # e.g. poisoned, paralyzed, etc.
 
