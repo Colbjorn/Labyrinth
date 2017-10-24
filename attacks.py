@@ -39,14 +39,18 @@ def tail_attack(self, target):
     print(self["name"], "is tail-whipping", target["name"], "! They've taken", damage, "damage.")
 
 def doubleslap_attack(self, target): # either implement 2 times or modify health
-    damage = random.randint(1,5) + (self["attack"]*0.5)
-    target["health"] -= damage
-    print(self["name"], "is giving", target["name"], "a double slap! They've taken", damage, "damage.")
+    for x in range (1,2):
+        damage = random.randint(2,4) + (self["attack"]*0.6)
+        target["health"] -= damage
+        print(self["name"], "is giving", target["name"], "a slap! They've taken", damage, "damage.")
+    print(self["name"], "gave", target["name"], "a double slap!")
 
 def fiveslap_attack(self, target): # either implement 5 times or modify health
-    damage = random.randint(1,5) + (self["attack"]*0.5)
-    target["health"] -= damage
-    print(self["name"], "is giving", target["name"], "a quintuple slap! They've taken", damage, "damage.")
+    for x in range (1,5):
+        damage = random.randint(1,3) + (self["attack"]*0.3)
+        target["health"] -= damage
+        print(self["name"], "is giving", target["name"], "a slap! They've taken", damage, "damage.")
+    print(self["name"], "gave", target["name"], "a quintuple slap!")
 
 def spit_attack(self, target):
     damage = random.randint(2,4) + (self["attack"]*0.5)
@@ -75,6 +79,11 @@ def rainbow_attack(self, target):
     damage = random.randint(3,7) + (self["attack"]*0.5)
     target["health"] -= damage
     print(self["name"], "is firing the power of rainbows to", target["name"], "! They've taken", damage, "damage. Don't do drugs kids!")
+
+def scream_attack(self, target):
+    damage = random.randint(2,4) + (self["attack"]*0.3)
+    target["health"] -= damage
+    print(self["name"], "is rupturing", target["name"] + "'s ears & insides by screaming! They've taken"), damage, "damage."
 
 ##### PLAYER ATTACKS #####
 def p_attack(self, target, weapon):
