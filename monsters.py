@@ -18,7 +18,9 @@ goblin = {  # Sample monster subject to change.
     "status effects": [],
 
     "attacks": {
-        "scratch": attacks.scratch_attack
+        "scratch": attacks.scratch_attack,
+        "doubleslap": attacks.doubleslap_attack,
+        "5slap": attacks.fiveslap_attack,
     },
 
     "loot": [],
@@ -39,7 +41,10 @@ skeleton = {
 
     "attacks": {
         "scratch": attacks.scratch_attack,
-        "stun": attacks.stun_attack
+        "stun": attacks.stun_attack,
+        "sword": attacks.sword_attack,
+        "banter": attacks.banter_attack,
+        "summon": attacks.summon_attack,
     },
 
     "loot": [],
@@ -60,7 +65,10 @@ slime = {
     "status_effects": [],
 
     "attacks": {
-        "scratch": attacks.scratch_attack
+        "scratch": attacks.scratch_attack,
+        "summon": attacks.summon_attack,
+        "stomp": attacks.stomp_attack,
+        "spit": attacks.spit_attack,
     },
 
     "loot": [],
@@ -81,7 +89,9 @@ zombie = {
     "status_effects": [],
 
     "attacks": {
-        "punch": attacks.punch_attack
+        "punch": attacks.punch_attack,
+        "bite": attacks.bite_attack,
+        "scratch": attacks.scratch_attack,
     },
 
     "loot": [],
@@ -103,7 +113,12 @@ orc = {
 
     "attacks": {
         "punch": attacks.punch_attack,
-        "sword": attacks.sword_attack
+        "sword": attacks.sword_attack,
+        "scratch": attacks.scratch_attack,
+        "2slap": attacks.doubleslap_attack,
+        "5slap": attacks.fiveslap_attack,
+        "scream": attacks.scream_attack,
+
     },
 
     "loot": [],
@@ -126,7 +141,8 @@ ogre = {
     "attacks": {
         "scratch": attacks.scratch_attack,
         "stun": attacks.stun_attack,
-        "punch": attacks.punch_attack
+        "punch": attacks.punch_attack,
+        "scream": attacks.scream_attack,
     },
 
     "loot": [],
@@ -147,7 +163,10 @@ evil_unicorn = {
     "status_effects": [],
 
     "attacks": {
-        "punch": attacks.punch_attack
+        "punch": attacks.punch_attack,
+        "rainbow": attacks.rainbow_attack,
+        "bite": attacks.bite_attack,
+        "spit": attacks.spit_attack,
     },
 
     "loot": [],
@@ -169,7 +188,11 @@ gang_of_bandits = {
 
     "attacks": {
         "punch": attacks.punch_attack,
-        "sword": attacks.sword_attack
+        "sword": attacks.sword_attack,
+        "bite": attacks.bite_attack,
+        "scratch": attacks.scratch_attack,
+        "2slap": attacks.doubleslap_attack,
+        "5slap": attacks.fiveslap_attack,
     },
 
     "loot": [],
