@@ -22,9 +22,11 @@ player = {
     # Revise stats, see if they make sense.
     "attack": 5,
 
-    "weapon": None,
+    "defense": 0,
 
-    "armor": None,
+    "weapon": "fists",
+
+    "armor": "no armor",
 
     "inventory": ("knife"),  # Simply add in item objects imported from items.py.
 
