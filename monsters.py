@@ -9,15 +9,14 @@ goblin = {  # Sample monster subject to change.
 
     "level": 1,
 
-    # Monsters currently only store max health because of the TODO below.
-    "max health": 15,  # TODO: Might be a good idea to have monster current health stored in the combat function.
-    # The above is in order to make it so new monsters always start at max health, and for easier tracking.
+    "max health": 15,
+    # Monsters will always set their (current) health equal to the max at the beginning of combat.
 
     "attack": 0,
 
     "status effects": [],
 
-    "attacks": [
+    "attacks": [  # Nerf this shit it's 2stronk4me
         attacks.scratch_attack,
         attacks.doubleslap_attack,
         attacks.fiveslap_attack,

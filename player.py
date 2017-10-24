@@ -26,11 +26,11 @@ player = {
 
     "defense": 0,
 
-    "weapon": "fists",
+    "weapon": "knife",
 
     "armor": "no armor",
 
-    "inventory": ["knife"],  # Simply add in item objects imported from items.py.
+    "inventory": [],  # Simply add in item objects imported from items.py.
 
     "spells": []
 }

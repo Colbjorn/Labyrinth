@@ -1,13 +1,36 @@
 import random
 from copy import copy
 from map import rooms
+from monsters import monsters
+from player import player
+from descriptions import room_descriptions
+
+
+def choose_monster(room):
+    # This function chooses a monster equal to ya boy's in level and adds it to the room taken as an argument.
+    # Also has a chance of spawning nothing at all.
+    spawn = False
+    if random.randint(1, 2) == 1:
+        spawn = True
+    if spawn:
+        chosen = False
+        monsters_copy = copy(monsters)
+        while not chosen:
+            choice = random.choice(monsters_copy)
+            if choice["level"] != player["level"]:
+                monsters_copy.remove(choice)
+            else:
+                chosen = True
+                room["monster"] = choice
+    else:
+        room["monster"] = ""
 
 
 def make_room(co_ordinates):
     # This function creates a room dictionary with an appropriate name and number.
     # It will use random number generation to select from lists of items, descriptions, etc.
     new_room = {
-        "name": "", # TODO: Room name list.
+        "name": "",
 
         "description": """""",
 
@@ -27,6 +50,10 @@ def make_room(co_ordinates):
 
         "number": len(rooms)+1
     }
+    choose_monster(new_room)
+    location = copy(random.choice(room_descriptions))
+    new_room["name"] = location["name"]
+    new_room["description"] = location["description"]
     rooms[tuple(co_ordinates)] = new_room
 
 
@@ -39,6 +66,7 @@ def room_check(new_room_coordinates):
 
 
 def rooms_create_around(co_ordinates):
+    # Coordinates list rewritten due to if functions utilizing variable names.
     north = copy(co_ordinates)
     north[1] += 1
     east = copy(co_ordinates)
@@ -47,7 +75,7 @@ def rooms_create_around(co_ordinates):
     south[1] -= 1
     west = copy(co_ordinates)
     west[0] -= 1
-    rms = [north, east, west, south]
+    rms = [north, east, south, west]
     for i in rms:
         if room_check(i):
             rms.remove(i)
@@ -60,7 +88,6 @@ def rooms_create_around(co_ordinates):
         rms.remove(rm)
         rm_num -= 1
         make_room(rm)
-        print(rooms[tuple(co_ordinates)]["exits"])
         if rm == north:
             rooms[tuple(rm)]["exits"].append("south")
             rooms[tuple(co_ordinates)]["exits"].append("north")

@@ -20,11 +20,13 @@ def list_of_items(items):
         print(hold)
     return hold.rstrip(", ")
 
+
 # Prints all of the items in an inputted room.
 def print_room_items(room):
     if room["items"]:
         print("There is " + list_of_items(room["items"]) + " here.")
         print()
+
 
 def print_room(room):
     print()
@@ -32,8 +34,9 @@ def print_room(room):
     print(room["name"].upper())
     print()
     # Display room description
-    print(room["description"])
-    print()
+    if not room["entered"]:
+        print(room["description"])
+        print()
     # Display room items3
     print_room_items(room)
 
@@ -66,11 +69,11 @@ def is_valid_exit(exits, chosen_exit):
 
 def execute_go(direction):
     if is_valid_exit(rooms[tuple(player["location"])]["exits"], direction):
+        rooms[tuple(player["location"])]["entered"] = True
         move(direction, player["location"])
         print(player["location"])
         if not rooms[tuple(player["location"])]["entered"]:
             rooms_create_around(player["location"])
-            rooms[tuple(player["location"])]["entered"] =  True
         print(rooms[tuple(player["location"])]["entered"])
     else:
         print("You cannot go there.")
@@ -117,7 +120,6 @@ def menu(exits, room_items, inv_items):
 
 def move(direction, co_ordinates):
     # changes player coords to next room
-    print(co_ordinates)
     if direction == "north":
         co_ordinates[1] += 1
     elif direction == "east":
@@ -129,21 +131,38 @@ def move(direction, co_ordinates):
 
 
 def combat_menu(monster):
-    inpt = input("What will you do? ATTACK with your weapon, USE an item or RUN away?")
-    norminpt = normalise_input(inpt)
-
-    if len(norminpt) == 0:
-        print("You pass your turn.")
-    elif norminpt[0] == "attack":
-        p_attack(player, monster, player["weapon"])
-    elif norminpt[0] == "use":
-        if len(norminpt)> 1:
+    choice = False
+    while not choice:
+        inpt = input("What will you do? ATTACK with your weapon, USE an item or RUN away?")
+        norminpt = normalise_input(inpt)
+        if norminpt[0] == "attack":
+            p_attack(player, monster, player["weapon"])
+            choice = True
+        elif norminpt[0] == "use":
+            if len(norminpt) > 1:
+                pass  # Throw in the use function
+            else:
+                print("Use what?")
+                print_inventory_items(player["inventory"])
+        elif norminpt[0] == "run":
+            result = random.randint(1, 5)
+            print(result)
+            if result < 3:
+                print("Successfully escaped!")
+                return "run"
+            else:
+                print("Failed to run away!")
+                choice = True
+        else:
+            print("Can't do that!")
 
 
 def initiate_combat(monster):
+    # Entire combat loop.
     monster["health"] = monster["max health"]
 
-    def fighting():
+    def theyded():
+        # Checks health. If anyone dies, stops the fighting appropriately.
         if monster["health"] <= 0:
             print(monster["name"], "has been slain!")
             for i in monster["loot"]:
@@ -153,7 +172,7 @@ def initiate_combat(monster):
             print("Gained", monster["experience"], "experience!")
             player["gold"] += monster["gold"]
             print("Gained", monster["gold"], "gold!")
-            return False
+            return True
         elif player["health"] <= 0:
             print("You have been slain!")
             print(""" __     ______  _    _   _____ _____ ______ _____  
@@ -163,13 +182,44 @@ def initiate_combat(monster):
     | | | |__| | |__| | | |__| || |_| |____| |__| |
     |_|  \____/ \____/  |_____/_____|______|_____/ """)
             global playing
-            playing = False
-            return False
-        else:
             return True
-    while fighting():
-        random.choice(monster["attacks"])(monster, player)
+            playing = False
 
+    print(monster["name"], "attacks!")
+    while 1:
+        if theyded():
+            break
+        choice = combat_menu(monster)
+        if choice == "run":
+            # Runs in random direction.
+            north = copy(player["location"])
+            north[1] += 1
+            east = copy(player["location"])
+            east[0] += 1
+            south = copy(player["location"])
+            south[1] -= 1
+            west = copy(player["location"])
+            west[0] -= 1
+            options = [north, east, west, south]
+            new_options = []
+            for i in options:
+                if room_check(i):
+                    new_options.append(i)
+            run_choice = random.choice(new_options)
+            if run_choice == north:
+                move("north", player["location"])
+            elif run_choice == east:
+                move("east", player["location"])
+            elif run_choice == south:
+                move("south", player["location"])
+            elif run_choice == west:
+                move("west", player["location"])
+            else:
+                print("Error while running away.")
+            break
+        if theyded():
+            break
+        random.choice(monster["attacks"])(monster, player)
 
 
 def main():
@@ -189,6 +239,10 @@ def main():
 
         # Execute the player's command
         execute_command(command)
+        # Checks whether player has entered a monster's territory and initiates combat if so.
+        if current_room["monster"] != "":
+            initiate_combat(current_room["monster"])
+
 
 if __name__ == "__main__":
     main()
