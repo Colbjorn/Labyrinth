@@ -10,7 +10,7 @@ from player import * #allows fetching player's current weapon
 def scratch_attack(self, target):
     damage = random.randint(1, 3) + (self["attack"]*0.5)
     target["health"] -= damage
-    print(self["name"], " is scratching ", target, "! They've taken ", damage, " damage.")
+    print(self["name"], " is scratching ", target["name"], "! They've taken ", damage, " damage.")
     # TODO: Decide on how armor will work (if applicable) and add an armor check to attacks.
 
 def sword_attack(self, target):

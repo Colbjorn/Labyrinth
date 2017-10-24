@@ -6,7 +6,7 @@ from items import *
 from attacks import *
 from generator import *
 from monsters import *
-
+playing = True
 
 # Turns inputted list into a string of items.
 def list_of_items(items):
@@ -101,6 +101,7 @@ def execute_command(command):
 
 
 def update_location(direction):
+    pass
 
 
 def menu(exits, room_items, inv_items):
@@ -121,8 +122,51 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 
+def combat_menu(monster):
+    inpt = input("What will you do? ATTACK with your weapon, USE an item or RUN away?")
+    norminpt = normalise_input(inpt)
+
+    if len(norminpt) == 0:
+        print("You pass your turn.")
+    elif norminpt[0] == "attack":
+        p_attack(player, monster, player["weapon"])
+    elif norminpt[0] == "use":
+        if len(norminpt)> 1:
+
+
+def initiate_combat(monster):
+    monster["health"] = monster["max health"]
+
+    def fighting():
+        if monster["health"] <= 0:
+            print(monster["name"], "has been slain!")
+            for i in monster["loot"]:
+                player["inventory"].append(i)
+                print("Obtained", i + "!")
+            player["experience"] += monster["experience"]
+            print("Gained", monster["experience"], "experience!")
+            player["gold"] += monster["gold"]
+            print("Gained", monster["gold"], "gold!")
+            return False
+        elif player["health"] <= 0:
+            print("You have been slain!")
+            print(""" __     ______  _    _   _____ _____ ______ _____  
+ \ \   / / __ \| |  | | |  __ \_   _|  ____|  __ \ 
+  \ \_/ / |  | | |  | | | |  | || | | |__  | |  | |
+   \   /| |  | | |  | | | |  | || | |  __| | |  | |
+    | | | |__| | |__| | | |__| || |_| |____| |__| |
+    |_|  \____/ \____/  |_____/_____|______|_____/ """)
+            global playing
+            playing = False
+            return False
+        else:
+            return True
+    while fighting():
+        random.choice(monster["attacks"])(monster, player)
+
+
+
 def main():
-    playing = True
     # Main game loop
     while playing:
         # Display game status (room description, inventory etc.)

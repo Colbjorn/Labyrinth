@@ -17,13 +17,13 @@ goblin = {  # Sample monster subject to change.
 
     "status effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack
-    },
+    "attacks": [attacks.scratch_attack],
 
     "loot": [],
 
-    "experience": 20
+    "experience": 20,
+
+    "gold": 5
 }
 
 skeleton = {
@@ -35,16 +35,20 @@ skeleton = {
 
     "max health": 8,
 
+    "attack": 2,
+
     "status effects": [],
 
-    "attacks": {
-        "scratch": attacks.scratch_attack,
-        "stun": attacks.stun_attack
-    },
+    "attacks": [
+        attacks.scratch_attack,
+        attacks.stun_attack,
+    ],
 
     "loot": [],
 
-    "experience": 15
+    "experience": 15,
+
+    "gold": 10
 }
 
 slime = {
