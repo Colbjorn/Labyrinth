@@ -221,6 +221,38 @@ gang_of_bandits = {
         "scratch": attacks.scratch_attack,
         "2slap": attacks.doubleslap_attack,
         "5slap": attacks.fiveslap_attack,
+        "banter": attacks.banter_attack,
+    },
+
+    "loot": [],
+
+    "experience": 60,
+
+    "gold": 15,
+}
+
+devil_cat = {
+
+    "name": "The Devil's Cat",
+
+    "description": "All the things you wished your cat wouldn't do.",
+
+    "level": 6,
+
+    "max health": 40,
+
+    "attack": 0.6,
+
+    "status_effects": [],
+
+    "attacks": {
+        "bite": attacks.bite_attack,
+        "scratch": attacks.scratch_attack,
+        "summon": attacks.summon_attack,
+        "scream": attacks.scream_attack,
+        "spit_f": attacks.spit_fire_attack,
+        "tail": attacks.tail_attack,
+        "banter": attacks.banter_attack,
     },
 
     "loot": [],
@@ -263,6 +295,39 @@ dragon = {
     "gold": 20,
 }
 
+giant_dragon = {
+
+    "name": "Giant Dragon",
+
+    "description": "It's a giant dragon! Yeah, I'd certainly try running now, if that command existed...",
+
+    "level": 10,
+
+    "max health": 160,
+
+    "attack": 1.2,
+
+    "status_effects": [],
+
+    "attacks": {
+        "punch": attacks.punch_attack,
+        "bite": attacks.bite_attack,
+        "scratch": attacks.scratch_attack,
+        "stomp": attacks.stomp_attack,
+        "spit_a": attacks.spit_acid_attack,
+        "spit_f": attacks.spit_fire_attack,
+        "tail": attacks.tail_attack,
+        "summon": attacks.summon_attack,
+        "scream": attacks.scream_attack,
+    },
+
+    "loot": [],
+
+    "experience": 200,
+
+    "gold": 30,
+}
+
 
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.
-monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits, dragon]
+monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits, devil_cat, dragon, giant_dragon]
