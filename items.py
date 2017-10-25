@@ -93,3 +93,10 @@ items = {
 
     "leather armor": leather_armor
 }
+
+items_list = [
+
+    knife,
+
+    leather_armor
+]

@@ -24,7 +24,7 @@ goblin = {  # Sample monster subject to change.
 
     "loot": [],
 
-    "experience": 20,
+    "experience": 5,
 
     "gold": 5,
 }
@@ -359,6 +359,33 @@ giant_dragon = {
     "gold": 30,
 }
 
+azgoth = {
+    "Name": "Azgoth, Devourer of Worlds",
 
+    "description": """The 37-dimensional being that started it all is before you. It almost looks serene.
+    You cannot understand its very existence. All you know is the motivation within you to end this once and for all.""",
+
+    "level": 20,
+
+    "max health": 500,
+
+    "attack": 50,
+
+    "status effects": [],
+
+    "attacks": [
+        attacks.stomp_attack,
+        attacks.spit_fire_attack,
+        attacks.summon_attack,
+        attacks.qte_cosmic_slap,
+        attacks.qte_kamehameha
+    ],
+
+    "loot": [],
+
+    "experience": 0,
+
+    "gold": 0
+}
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.
 monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits, ninja, devil_cat, dragon, giant_dragon]

@@ -1,11 +1,13 @@
 # Tracks player's stats.
+
 player = {
     "name": "Captain Placeholder",  # Inputted by player at start of game.
 
-    # TODO: Make sure the following are printed every turn.
     "location": [0, 0],
 
-    "max health": 20,  # TODO: Balance this with weapons and monsters!
+    "last important location": [0, 0],
+
+    "max health": 20,
 
     "health": 20,
 
@@ -26,7 +28,7 @@ player = {
 
     "defense": 0,
 
-    "weapon": "knife",
+    "weapon": "fists",
 
     "armor": "no armor",
 

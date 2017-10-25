@@ -1,9 +1,10 @@
 import random
 from copy import copy
-from map import rooms
+from map import *
 from monsters import monsters
 from player import player
 from descriptions import room_descriptions
+from items import items_list
 
 
 def choose_monster(room):
@@ -17,13 +18,22 @@ def choose_monster(room):
         monsters_copy = copy(monsters)
         while not chosen:
             choice = random.choice(monsters_copy)
-            if choice["level"] != player["level"]:
+            if choice["level"] > player["level"]:
                 monsters_copy.remove(choice)
             else:
                 chosen = True
                 room["monster"] = choice
     else:
         room["monster"] = ""
+
+
+def choose_item(room):
+    spawn = False
+    if random.randint(1, 2) == 1:
+        spawn = True
+    if spawn:
+        choice = random.choice(items_list)
+        room["items"].append(choice)
 
 
 def make_room(co_ordinates):
@@ -54,6 +64,9 @@ def make_room(co_ordinates):
     location = copy(random.choice(room_descriptions))
     new_room["name"] = location["name"]
     new_room["description"] = location["description"]
+    if (len(rooms) + 1) == 10:
+        new_room = story_room_1
+        new_room["co-ordinates"] = co_ordinates
     rooms[tuple(co_ordinates)] = new_room
 
 
@@ -76,16 +89,17 @@ def rooms_create_around(co_ordinates):
     west = copy(co_ordinates)
     west[0] -= 1
     rms = [north, east, south, west]
+    valid_rms = []
     for i in rms:
-        if room_check(i):
-            rms.remove(i)
-    rm_num = random.randint(1, len(rms))
+        if not room_check(i):
+            valid_rms.append(i)
+    rm_num = random.randint(1, len(valid_rms))
     while rm_num > 0:
         # Praise StackOverflow. Reference:
         # https://stackoverflow.com/questions/306400/how-to-randomly-select-an-item-from-a-list
-        rm = random.choice(rms)
+        rm = random.choice(valid_rms)
         # End reference.
-        rms.remove(rm)
+        valid_rms.remove(rm)
         rm_num -= 1
         make_room(rm)
         if rm == north:
