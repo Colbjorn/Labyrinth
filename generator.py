@@ -89,16 +89,20 @@ def rooms_create_around(co_ordinates):
         rm_num -= 1
         make_room(rm)
         if rm == north:
-            rooms[tuple(rm)]["exits"].append("south")
+            if not ("south") in rooms[tuple(rm)]["exits"]:
+                rooms[tuple(rm)]["exits"].append("south")
             rooms[tuple(co_ordinates)]["exits"].append("north")
         elif rm == east:
-            rooms[tuple(rm)]["exits"].append("west")
+            if not ("west") in rooms[tuple(rm)]["exits"]:
+                rooms[tuple(rm)]["exits"].append("west")
             rooms[tuple(co_ordinates)]["exits"].append("east")
         elif rm == south:
-            rooms[tuple(rm)]["exits"].append("north")
+            if not ("north") in rooms[tuple(rm)]["exits"]:
+                rooms[tuple(rm)]["exits"].append("north")
             rooms[tuple(co_ordinates)]["exits"].append("south")
         elif rm == west:
-            rooms[tuple(rm)]["exits"].append("east")
+            if not ("east") in rooms[tuple(rm)]["exits"]:
+                rooms[tuple(rm)]["exits"].append("east")
             rooms[tuple(co_ordinates)]["exits"].append("west")
         else:
             print("Invalid exit created.")

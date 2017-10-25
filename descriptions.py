@@ -4,14 +4,9 @@ room_hell = {
     "name": "Hell",
     
     "description":
-    """You are surrounded by fire and you are now trapped inside.
-       Next to you, you see a skeleton holding a burning hammer.
-       Then you see a old and dusty table which has the golden key
-       with a poisonous spider. You only have one way to get out of
-       this place safely. However the door is locked. To get out of
-       this place safely, you will need to pick either the hammer
-       to break the door and exit to the dinning hall or the key to
-       unlock the door and exit to the classroom.""",
+"""You are surrounded by fire.
+Next to you, you see a skeleton holding a burning hammer.
+You see an old and dusty table which has a golden key on top.""",
 
 }
 
@@ -19,34 +14,31 @@ room_classroom = {
     "name": "Classroom",
 
     "description":
-    """You are in a classroom and you see the room flooded. Beside you,
-       you see Kirill in a statue pointing at someone. To the north is
-       the door which leads to death room and to the south is
-       the dark and stormtrooper."""
+"""You are in a flooded classroom. Beside you,
+you see a statue of Kirill pointing at someone."""
 }
 
 room_death = {
     "name": "Death room",
 
     "description":
-    """You are sitting on a old, dusty and stiff chair. Straight ahead
-       you can see dead bodies with full of blood. The walls are all
-       painted with blood. A toy is just approaching you by making a
-       sound. You turn to your right and you see a door which has two routes.
+"""You are sitting on a old, dusty and stiff chair. Straight ahead
+you can see dead bodies. The walls are
+painted with blood. You turn to your right and you see a door which has two routes.
         """
 }
 #Sound to be added
 
 room_dark_and_stormtrooper = {
-    "name": "Dark and stormtrooper",
+    "name": "Dark and stormy",
 
     "description":
-    """You are now sitting in a bath tub with the deadly stormtroopers.
-       You can see numerous of them staring at you but won't communicate
-       with you. The room is very dark that you can't even see the bath tub
-       properly. There's a small candle on the table next to the bath tub.
-       The flame barely flickered which makes it easier for you to see the
-       stormtroopers."""
+"""You enter a dark room. Infront of you is an old rusty bathtub containing 
+suspicious men with white helmets.
+They seem to be looking in your direction.
+There's a small candle on the table next to the bath tub.
+The flame gently flickers, allowing short glimpses of the
+shiny white helmets."""
        
 }
 
@@ -54,9 +46,9 @@ room_forest = {
     "name": "Forest room",
 
     "description":
-    """You are standing in the dark forest and all you can see are the green
-       trees. However as you walk forward the trees look burnt and the ground
-       is full of red leaves.
+"""You are standing in a dark forest surrounded by the tall trees.
+As you walk forward you notice that the trees look burnt and the ground
+is warm and full of ashes.
        """
 }
 
@@ -64,62 +56,48 @@ room_skeleton = {
     "name": "Skeleton room",
 
     "description":
-    """You are leaning on a skeleton and you see white smokes coming out from
-       a window next to you. As it fades you can then see more skeleton hanging
-       on a monkey bar.  """
+"""You enter a cold, dark room. You spot a skinny figure leaning against the stone walls, 
+a tiny puff of smoke enters the room from a thin gap in the floorboads.
+As it fades you notice that the floor is damp and full of bones.  """
 }
 
 room_mountain = {
-    "name": "Mountain lab",
+    "name": "Mountain",
 
     "description":
-    """You are standing next to the mountain. The room is full of black snow mixed
-       with blood. Then you see a man looking at you then ignores you and walk. """
+"""You are standing next to a mountain. It is gently snowing and the light from the sun pierces your eyes.
+You look down and notice red spots in the snow, and a long track from something that has 
+been dragged through it. In the distance you spot two red glimmers that look like eyes. """
 }
 room_acid = {
     "name": "Acid room",
     "description":
-    """You are leaning against the wall and you see a door which has a lot of smokes
-       coming out from the room. You see a doctor with an burnt face holding an acid
-       and looking at you. """
+"""You are leaning against the wall and you see a door which has a lot of smoke
+flowing out from underneath it. You see a man in a white jacket with a burnt face holding a 
+bottle of clear liquid looking at you. """
 
 }
 
 room_disco = {
-    "name": "Disco room",
+    "name": "Disco",
     "description":
-    """You are now on the dance floor and you see the lights swtching on and off with
-       different colours. Next to you, you can see black creatures dancing on the disco
-       floor. """
-}
-
-room_lava = {
-    "name": "Under Lava room",
-    "description":
-    """You are standing under the lava protected by a magical power. As you walk further
-       you can see your reflection on the lava.  """
+"""You find yourself on a sweaty dancefloor and you can't help but get down to the funky music.
+Loving life, you look to your right and notice that you are surrounded by tall, hairy creatures 
+and they are not in the mood to boogey. """
 }
 
 room_ocean = {
     "name": "Ocean room",
     "description":
-    """ You are in the boat and the boat is in the middle of the ocean. The view looks
-        awesome with clear bright blue sky. A lion comes out of the ocean and goes to the
-        otherside of the boat. As soon as you see them lion, the sky turns red.  """
+"""You are in a boat which is in the middle of the ocean. The sea becomes turbulant and the sky turns black.
+You grip the sides of the boat and pull yourself through a hatch on the deck where you find a musty dark room.   """
 }
 
-room_planet = {
-    "name": "Twinkle Planet",
+room_darkness = {
+    "name": "Darkness",
     "description":
-    """You are standing on top of this tiny little planet. This planet can only take
-       your weight as if any additional weight has been put on this planet, it can explode.
-       In this room, you can see bright stars with black background.  """
-}
-
-room_magician = {
-    "name": "Magician room",
-    "description":
-    """   """
+"""Your vision is heavily impaired. Are you going blind? You reach out infront of you and feel around. 
+You feel a sharp pain on your finger tip and a small trickle of blood slides down your hand.  """
 }
 
 
@@ -133,10 +111,8 @@ room_descriptions = [
     room_mountain,
     room_acid,
     room_disco,
-    room_lava,
     room_ocean,
-    room_planet,
-    room_magician
+    room_darkness
 ]
 
 #under lava
