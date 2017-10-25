@@ -6,6 +6,7 @@ from items import *
 from attacks import *
 from generator import *
 from monsters import *
+from healthbar import call_health
 playing = True
 
 
@@ -133,9 +134,13 @@ def move(direction, co_ordinates):
 def combat_menu(monster):
     choice = False
     while not choice:
+        call_health(player["health"], player["max health"])
         inpt = input("What will you do? ATTACK with your weapon, USE an item or RUN away?")
         norminpt = normalise_input(inpt)
-        if norminpt[0] == "attack":
+        if len(norminpt) == 0:
+            print("You do nothing.")
+            choice = True
+        elif norminpt[0] == "attack":
             p_attack(player, monster, player["weapon"])
             choice = True
         elif norminpt[0] == "use":
@@ -172,6 +177,7 @@ def initiate_combat(monster):
             print("Gained", monster["experience"], "experience!")
             player["gold"] += monster["gold"]
             print("Gained", monster["gold"], "gold!")
+            rooms[tuple(player["location"])]["monster"] = ""
             return True
         elif player["health"] <= 0:
             print("You have been slain!")
@@ -182,8 +188,8 @@ def initiate_combat(monster):
     | | | |__| | |__| | | |__| || |_| |____| |__| |
     |_|  \____/ \____/  |_____/_____|______|_____/ """)
             global playing
-            return True
             playing = False
+            return True
 
     print(monster["name"], "attacks!")
     while 1:
