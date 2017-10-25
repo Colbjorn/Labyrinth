@@ -160,6 +160,8 @@ def combat_menu(monster):
                 choice = True
         else:
             print("Can't do that!")
+        print()
+
 
 
 def initiate_combat(monster):

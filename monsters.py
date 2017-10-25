@@ -297,7 +297,7 @@ dragon = {
 
     "name": "Dragon",
 
-    "description": "It's a dragon! I'd recommend running, but that command doesn't exist.",
+    "description": "It's a dragon! I'd recommend running...",
 
     "level": 5,
 
@@ -330,7 +330,7 @@ giant_dragon = {
 
     "name": "Giant Dragon",
 
-    "description": "It's a giant dragon! Yeah, I'd certainly try running now, if that command existed...",
+    "description": "It's a giant dragon! Yeah, I'd certainly try running now...",
 
     "level": 10,
 
