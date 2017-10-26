@@ -429,7 +429,21 @@ def combat_menu(monster):
             choice = True
         elif norminpt[0] == "use":
             if len(norminpt) > 1:
-                pass  # TODO Throw in the use function
+                item = " ".join(norminpt[1:(norminpt.index("on"))])
+                target = " ".join(norminpt[(norminpt.index("on")) + 1:])
+                norminpt[1] = item
+                norminpt[2] = target
+                norminpt[3:] = []
+                if modified_amount(player["inventory"], norminpt[1], "check") and (
+                        norminpt[2] in monsters_dict or check_if_user(norminpt[2])):
+                    execute_use(items_dict[norminpt[1]], norminpt[2])
+                elif norminpt[1] in player["inventory"]:
+                    print("Use " + norminpt[1] + " on who?")
+                elif norminpt[2] in monsters_dict or check_if_user(norminpt[2]):
+                    print("Use what on " + norminpt[2] + "?")
+                    print(norminpt[1])
+                else:
+                    print("Use what on who?")
             else:
                 print("Use what?")
                 print_inventory_items(player["inventory"])
@@ -464,15 +478,12 @@ def initiate_combat(manster):
     # Entire combat loop.
     monster = deepcopy(manster)
     monster["health"] = monster["max health"]
-<<<<<<< HEAD
     monster["loot"] = []
     for loot in manster["loot"]:
         if random.randint(1, 10) == 1:
             monster["loot"].append(loot)
 
-=======
-    
->>>>>>> origin/master
+
     def theyded():
         # Checks health. If anyone dies, stops the fighting appropriately.
         if monster["health"] <= 0:
