@@ -91,5 +91,5 @@ ENTITY POSSIBLY RESPONSIBLE??
 no no no no no"''')
         input()
         print('''The rest of the pages are either gibberish, illegible, or repetitions of the words "no", "death" and, for some reason,
-"digestion". Buried underneath all the pages you notice a faint glimmer...''')
+"digestion". Buried underneath all the pages you notice a faint glimmer... You escape.''')
         # TODO REWARD

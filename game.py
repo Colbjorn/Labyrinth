@@ -567,13 +567,11 @@ def main():
         # Show the menu with possible actions and ask the player
         current_room = rooms[tuple(player["location"])]
         command = menu(current_room["exits"], current_room["items"], player["inventory"], player["location"])
-
         # Execute the player's command
         execute_command(command)
         # Checks whether player has entered a monster's territory and initiates combat if so.
         if current_room["monster"] != "":
             initiate_combat(current_room["monster"])
-
 
 if __name__ == "__main__":
     main()
