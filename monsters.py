@@ -1,5 +1,6 @@
 # This module lists all monsters and their relevant details.
 import attacks
+import items
 
 
 goblin = {  # Sample monster subject to change.
@@ -22,7 +23,10 @@ goblin = {  # Sample monster subject to change.
         attacks.fiveslap_attack,
     ],
 
-    "loot": [],
+    "loot": [
+	    items.bad_sword,
+	    items.old_hammer,
+    ],
 
     "experience": 5,
 
@@ -50,7 +54,11 @@ skeleton = {
         attacks.summon_attack,
     ],
 
-    "loot": [],
+    "loot": [
+	    items.bad_sword,
+	    items.old_hammer,
+	    items.leather_armor
+    ],
 
     "experience": 15,
 
@@ -78,7 +86,10 @@ slime = {
         attacks.spit_acid_attack,
     ],
 
-    "loot": [],
+    "loot": [
+	    items.leather_armor,
+	    items.bad_sword,
+    ],
 
     "experience": 10,
 
@@ -105,7 +116,11 @@ zombie = {
         attacks.scratch_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.sword,
+        items.hammer,
+        items.wooden_armor,
+    ],
 
     "experience": 25,
 
@@ -135,7 +150,11 @@ orc = {
         attacks.scream_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.sword,
+        items.hammer,
+        items.wooden_armor,
+    ],
 
     "experience": 30,
 
@@ -163,7 +182,11 @@ ogre = {
         attacks.scream_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.sword,
+        items.hammer,
+        items.wooden_armor,
+    ],
 
     "experience": 35,
 
@@ -191,7 +214,10 @@ evil_unicorn = {
         attacks.spit_acid_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.golden_armor,
+	    items.sword,
+    ],
 
     "experience": 30,
 
@@ -222,7 +248,10 @@ gang_of_bandits = {
         attacks.banter_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.golden_armor,
+	    items.sword,
+    ],
 
     "experience": 60,
 
@@ -255,7 +284,10 @@ ninja = {
         attacks.stomp_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.golden_armor,
+        items.new_sword,
+    ],
 
     "experience": 60,
 
@@ -286,7 +318,10 @@ devil_cat = {
         attacks.banter_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.fire_hammer,
+        items.platinum_armor,
+    ],
 
     "experience": 60,
 
@@ -319,7 +354,10 @@ dragon = {
         attacks.scream_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.diamond_armor,
+        items.new_sword,
+    ],
 
     "experience": 100,
 
@@ -352,7 +390,10 @@ giant_dragon = {
         attacks.scream_attack,
     ],
 
-    "loot": [],
+    "loot": [
+        items.ultimate_armor,
+        items.lightsaber,
+    ],
 
     "experience": 200,
 
@@ -381,7 +422,7 @@ azgoth = {
         attacks.qte_kamehameha
     ],
 
-    "loot": [],
+    "loot": [items.kirill],
 
     "experience": 0,
 
