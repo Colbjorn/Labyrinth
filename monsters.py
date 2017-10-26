@@ -17,15 +17,15 @@ goblin = {  # Sample monster subject to change.
 
     "status effects": [],
 
-    "attacks": [  # Nerf this shit it's 2stronk4me
+    "attacks": [  # TODO Nerf this shit it's 2stronk4me
         attacks.scratch_attack,
         attacks.doubleslap_attack,
         attacks.fiveslap_attack,
     ],
 
     "loot": [
-	    items.bad_sword,
-	    items.old_hammer,
+        ["knackered sword", 1],
+        ["old hammer", 1]
     ],
 
     "experience": 5,
@@ -55,9 +55,9 @@ skeleton = {
     ],
 
     "loot": [
-	    items.bad_sword,
-	    items.old_hammer,
-	    items.leather_armor
+        ["knackered sword", 1],
+        ["old hammer", 1],
+        ["leather armor", 1]
     ],
 
     "experience": 15,
@@ -87,8 +87,8 @@ slime = {
     ],
 
     "loot": [
-	    items.leather_armor,
-	    items.bad_sword,
+        ["leather armor", 1],
+        ["knackered sword", 1]
     ],
 
     "experience": 10,
@@ -117,9 +117,9 @@ zombie = {
     ],
 
     "loot": [
-        items.sword,
-        items.hammer,
-        items.wooden_armor,
+        ["sword", 1],
+        ["hammer", 1],
+        ["wooden armor", 1]
     ],
 
     "experience": 25,
@@ -151,9 +151,9 @@ orc = {
     ],
 
     "loot": [
-        items.sword,
-        items.hammer,
-        items.wooden_armor,
+        ["sword", 1],
+        ["hammer", 1],
+        ["wooden armor", 1]
     ],
 
     "experience": 30,
@@ -183,9 +183,9 @@ ogre = {
     ],
 
     "loot": [
-        items.sword,
-        items.hammer,
-        items.wooden_armor,
+        ["sword", 1],
+        ["hammer", 1],
+        ["wooden armor", 1]
     ],
 
     "experience": 35,
@@ -215,8 +215,8 @@ evil_unicorn = {
     ],
 
     "loot": [
-        items.golden_armor,
-	    items.sword,
+        ["golden armor", 1],
+        ["sword", 1]
     ],
 
     "experience": 30,
@@ -249,8 +249,8 @@ gang_of_bandits = {
     ],
 
     "loot": [
-        items.golden_armor,
-	    items.sword,
+        ["golden armor", 1],
+        ["sword", 1]
     ],
 
     "experience": 60,
@@ -285,8 +285,8 @@ ninja = {
     ],
 
     "loot": [
-        items.golden_armor,
-        items.new_sword,
+        ["golden armor", 1],
+        ["new sword", 1]
     ],
 
     "experience": 60,
@@ -319,8 +319,8 @@ devil_cat = {
     ],
 
     "loot": [
-        items.fire_hammer,
-        items.platinum_armor,
+        ["sulphuras", 1],
+        ["platinum armor", 1]
     ],
 
     "experience": 60,
@@ -355,8 +355,8 @@ dragon = {
     ],
 
     "loot": [
-        items.diamond_armor,
-        items.new_sword,
+        ["diamond armor", 1],
+        ["new sword", 1]
     ],
 
     "experience": 100,
@@ -391,8 +391,8 @@ giant_dragon = {
     ],
 
     "loot": [
-        items.ultimate_armor,
-        items.lightsaber,
+        ["ultimatanium armor", 1],
+        ["lightsaber", 1]
     ],
 
     "experience": 200,
@@ -422,11 +422,35 @@ azgoth = {
         attacks.qte_kamehameha
     ],
 
-    "loot": [items.kirill],
+    "loot": [
+        ["kirill", 1]
+        ],
 
     "experience": 0,
 
     "gold": 0
 }
 # Important! In order for optimization to be implemented later on, keep the below list ordered by level.
-monsters = [goblin, skeleton, slime, zombie, orc, ogre, evil_unicorn, gang_of_bandits, ninja, devil_cat, dragon, giant_dragon]
+monsters = [goblin,
+
+            skeleton,
+
+            slime,
+
+            zombie,
+
+            orc,
+
+            ogre,
+
+            evil_unicorn,
+
+            gang_of_bandits,
+
+            ninja,
+
+            devil_cat,
+
+            dragon,
+
+            giant_dragon]

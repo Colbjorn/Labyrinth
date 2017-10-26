@@ -1,5 +1,4 @@
 # Stores the map. Room 1 is always the same. The other rooms are generated once the game begins.
-from items import items
 from monsters import monsters
 from interactables import *
 

@@ -2,11 +2,12 @@
 from map import rooms
 from gameparser import *
 from player import player
-from items import *
+from items import items_dict
 from attacks import *
 from generator import *
 from monsters import *
 from healthbar import call_health
+from copy import deepcopy
 playing = True
 
 
@@ -45,7 +46,9 @@ def check_story_rooms_around(co_ordinates):
 def list_of_items(itms):
     hold = ""
     for item in itms:
-        hold += (items[item]["name"] + ", ")
+        name = item[0]
+        amount = item[1]
+        hold += (items_dict[name]["name"] + " x " + str(amount) + ", ")
     return hold.rstrip(", ")
 
 
@@ -125,49 +128,71 @@ def execute_go(direction):
         print("You cannot go there.")
 
 
+def modified_amount(array, itemname, action):
+    # This function takes in an array, an item's name and an action as argument.
+    # When removing, the function checks for the item's name in the array and, if the item's amount is over 1, removes
+    # one unit from this amount. If there's only one left, it removes the list from the array entirely.
+    # When appending, it checks whether there first exists an item with that name in the array. If there, it
+    # increases its amount by 1. Otherwise it creates a new list within the array, containing one instance of the item.
+    # The function also returns a False boolean if it finds no item while removing so an appropriate print can be made.
+    if action == "remove":
+        for item in array:
+            if item[0] == itemname:
+                if item[1] == 1:
+                    array.remove(item)
+                    return True
+                else:
+                    item[1] -= 1
+                    return True
+        else:
+            return False
+    elif action == "append":
+        for item in array:
+            if item[0] == itemname:
+                item[1] += 1
+                return True
+        else:
+            array.append([itemname, 1])
+            return True
+
+
 def execute_take(item):
-    taken = False
-    for i in rooms[tuple(player["location"])]["items"]:
-        if (items[i]["name"] == item) or (items[i]["id"] == item):
-            player["inventory"].append(i)
-            rooms[tuple(player["location"])]["items"].remove(i)
-            taken = True
-            break
+    taken = modified_amount(rooms[tuple(player["location"])]["items"], item, "remove")
     if not taken:
         print("Can't take that!")
     else:
-        print("You took", item + ".")
+        print("You took", items_dict[item]["name"] + ".")
+        modified_amount(player["inventory"], item, "append")
     rooms[tuple(player["location"])]["entered"] = True
 
 
 def execute_drop(item):
-    dropped = False
-    for i in player["inventory"]:
-        if (items[i]["name"] == item) or (items[i]["id"] == item):
-            player["inventory"].remove(i)
-            rooms[tuple(player["location"])]["items"].append(i)
-            dropped = True
-            break
+    dropped = modified_amount(player["inventory"], item, "remove")
     if not dropped:
         print("Can't drop that!")
     else:
         print("You dropped", item + ".")
+        modified_amount(rooms[tuple(player["location"])]["items"], item, "append")
     rooms[tuple(player["location"])]["entered"] = True
 
 
 def execute_describe(item):
-    itm = items[item]
-    if itm in player["inventory"]:
-        print(itm["name"].upper())
-        print("Type:", itm["type"])
-        print(itm["description"])
-        if itm["type"] == "Weapon":
-            print("Attack:", itm["damage"])
-            print("Damage bonus: x", itm["bonus"])
-        elif itm["type"] == "Armor":
-            print("Defense:", itm["defense"])
-        print("Cost:", itm["cost"], "gold.")
-    else:
+    itm = items_dict[item]
+    is_there = False
+    for i in player["inventory"]:
+        if i[0] == item:
+            print(itm["name"].upper())
+            print("Type:", itm["type"])
+            print(itm["description"])
+            if itm["type"] == "Weapon":
+                print("Attack:", itm["damage"])
+                print("Damage bonus: x", itm["bonus"])
+            elif itm["type"] == "Armor":
+                print("Defense:", itm["defense"])
+            print("Cost:", itm["cost"], "gold.")
+            is_there = True
+            break
+    if not is_there:
         print("Can't examine an item you can\'t look at!")
 
 
@@ -179,27 +204,29 @@ def execute_status():
     print("Gold:", str(player["gold"]))
     print("Attack:", str(player["attack"]))
     print("Defense:", str(player["defense"]))
-    print("Weapon:", items[player["weapon"]]["name"])
-    print("Armor:", items[player["armor"]]["name"])
+    print("Weapon:", items_dict[player["weapon"]]["name"])
+    print("Armor:", items_dict[player["armor"]]["name"])
 
 
 def execute_equip(item):
-    itm = items[item]
-    if item in player["inventory"]:
-        if itm["type"] == "Weapon":
+    itm = items_dict[item]
+    is_there = False
+    if itm["type"] == "Weapon":
+        is_there = modified_amount(player["inventory"], item, "remove")
+        if is_there:
             if player["weapon"] is not None:  # If a weapon is being held, it'll move to the inventory.
-                player["inventory"].append(player["weapon"])
+                modified_amount(player["inventory"], player["weapon"], "append")
             player["weapon"] = item
-            player["inventory"].remove(item)
-        elif itm["type"] == "Armor":
+    elif itm["type"] == "Armor":
+        is_there = modified_amount(player["inventory"], item, "remove")
+        if is_there:
             if player["armor"] is not None:  # If an armor is being worn, it'll move to the inventory.
-                player["inventory"].append(player["armor"])
+                modified_amount(player["inventory"], player["armor"], "append")
             player["armor"] = item
-            player["inventory"].remove(item)
             player["defense"] = itm["defense"]
-        else:
-            print("Cannot equip that!")
     else:
+        print("Cannot equip that!")
+    if not is_there:
         print("You don't have that item!")
 
 
@@ -224,7 +251,7 @@ def execute_help():
     print()
     print("The following actions can be done in combat:")
     print("ATTACK will attack the enemy with your equipped weapon.")
-    print("USE + item + a target will use said item on that target. Don't forget the target!")
+    print("USE item ON a target will use said item on that target. Don't forget the target!")
     print("It would be a shame if you used a healing potion on an enemy, or a vial of poison on yourself!")
     print("RUN will attempt to run. Enemies get a free hit on you if you fail. If you succeed you will run in a random direction,")
     print("so be wise when fleeing!")
@@ -325,7 +352,7 @@ def combat_menu(monster):
             choice = True
         elif norminpt[0] == "use":
             if len(norminpt) > 1:
-                pass  # Throw in the use function
+                pass  # TODO Throw in the use function
             else:
                 print("Use what?")
                 print_inventory_items(player["inventory"])
@@ -356,17 +383,20 @@ def level_up_check(experience):
     print(player["experience"])
 
 
-def initiate_combat(monster):
+def initiate_combat(manster):
     # Entire combat loop.
+    monster = deepcopy(manster)
     monster["health"] = monster["max health"]
 
     def theyded():
         # Checks health. If anyone dies, stops the fighting appropriately.
         if monster["health"] <= 0:
             print(monster["name"], "has been slain!")
-            for loot in monster["loot"]:
-                player["inventory"].append(loot)
-                print("Obtained", loot + "!")
+            while monster["loot"] != []:
+                # Takes literally everything.
+                modified_amount(player["inventory"], monster["loot"][0][0], "append")
+                print("Obtained", monster["loot"][0][0] + "!")
+                modified_amount(monster["loot"], monster["loot"][0][0], "remove")
             player["experience"] += monster["experience"]
             print("Gained", monster["experience"], "experience!")
             level_up_check(player["experience"])
@@ -426,7 +456,6 @@ def initiate_combat(monster):
 def main():
     make_room([0, 1])
     rooms[(0, 1)]["exits"].append("south")
-
     # Main game loop
     while playing:
         # Display game status (room description, inventory etc.)

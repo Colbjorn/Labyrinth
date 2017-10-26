@@ -23,7 +23,7 @@ no_weapon = {
 }
 
 no_armor = {
-    "id": "no_armor",
+    "id": "no armor",
 
     "name": "Naked",
 
@@ -66,7 +66,7 @@ knife = {  # Sample item subject to change
 }
 
 bad_sword = {  # Sample item subject to change
-    "id": "bad_sword",
+    "id": "knackered sword",
 
     "name": "Knackered Sword",
 
@@ -101,7 +101,7 @@ sword = {  # Sample item subject to change
 
     "action": "slashing",
 
-    "description": "A generic sword. Still coated with fear from those lost to it's blade",
+    "description": "A generic sword. Still coated with the fear of those slain by it. Or blood, that's also possible.",
 
     "usage": "equip",
 
@@ -120,7 +120,7 @@ sword = {  # Sample item subject to change
 }
 
 new_sword = {  # Sample item subject to change
-    "id": "new_sword",
+    "id": "new sword",
 
     "name": "New Sword",
 
@@ -147,7 +147,7 @@ new_sword = {  # Sample item subject to change
 }
 
 glowing_sword = {  # Sample item subject to change
-    "id": "glowing_sword",
+    "id": "glowing sword",
 
     "name": "Glowing Sword",
 
@@ -174,7 +174,7 @@ glowing_sword = {  # Sample item subject to change
 }
 
 old_hammer = {  # Sample item subject to change
-    "id": "old_hammer",
+    "id": "old hammer",
 
     "name": "Old Hammer",
 
@@ -228,7 +228,7 @@ hammer = {  # Sample item subject to change
 }
 
 fire_hammer = {  # Sample item subject to change
-    "id": "fire_hammer",
+    "id": "sulphuras",
 
     "name": "Sulphuras",
 
@@ -327,7 +327,7 @@ clothes = {
 }
 
 leather_armor = {
-    "id": "leather_armor",
+    "id": "leather armor",
 
     "name": "Leather Armor",
 
@@ -345,7 +345,7 @@ leather_armor = {
 }
 
 wooden_armor = {
-    "id": "wooden_armor",
+    "id": "wooden armor",
 
     "name": "Wooden Armor",
 
@@ -363,7 +363,7 @@ wooden_armor = {
 }
 
 golden_armor = {
-    "id": "golden_armor",
+    "id": "golden armor",
 
     "name": "Golden Armor",
 
@@ -381,7 +381,7 @@ golden_armor = {
 }
 
 platinum_armor = {
-    "id": "platinum_armor",
+    "id": "platinum armor",
 
     "name": "Platinum Armor",
 
@@ -399,7 +399,7 @@ platinum_armor = {
 }
 
 diamond_armor = {
-    "id": "diamond_armor",
+    "id": "diamond armor",
 
     "name": "Diamond Armor",
 
@@ -417,7 +417,7 @@ diamond_armor = {
 }
 
 ultimate_armor = {
-    "id": "ultimate_armor",
+    "id": "ultimatanium armor",
 
     "name": "Ultimatanium Armor",
 
@@ -429,51 +429,51 @@ ultimate_armor = {
 
     "on use": lambda: itemeffects.equip(ultimate_armor),
 
-    "defense": 90,
+    "defense": 80,
 
     "cost": 1000
 }
 
 # It is of utmost importance that all dictionaries are saved within a list so that it is possible to call them
 # using an index or a loop!
-items = {
+items_dict = {
     "fists": no_weapon,
 
-    "no_armor": no_armor,
+    "no armor": no_armor,
 
     "knife": knife,
 
-    "bad_sword": bad_sword,
+    "knackered sword": bad_sword,
 
     "sword": sword,
 
-    "new_sword": new_sword,
+    "new sword": new_sword,
 
-    "glowing_sword": glowing_sword,
+    "glowing sword": glowing_sword,
 
-    "old_hammer": old_hammer,
+    "old hammer": old_hammer,
 
     "hammer": hammer,
 
     "kirill": kirill,
 
-    "fire_hammer": fire_hammer,
+    "sulphuras": fire_hammer,
 
     "lightsaber": lightsaber,
 
     "clothes": clothes,
 
-    "leather_armor": leather_armor,
+    "leather armor": leather_armor,
 
-    "wooden_armor": wooden_armor,
+    "wooden armor": wooden_armor,
 
-    "golden_armor": golden_armor,
+    "golden armor": golden_armor,
 
-    "platinum_armor": platinum_armor,
+    "platinum armor": platinum_armor,
 
-    "diamond_armor": diamond_armor,
+    "diamond armor": diamond_armor,
 
-    "ultimate_armor": ultimate_armor,
+    "ultimatanium armor": ultimate_armor,
 
 
 }

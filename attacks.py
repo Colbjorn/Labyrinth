@@ -133,7 +133,7 @@ def qte_cosmic_slap(self, target):
 ##### PLAYER ATTACKS #####
 def p_attack(self, target, weapon):
     # lookup weapon name passed to function on items.py and retrieve it's name and damage
-    damage = items[weapon]["damage"] + (self["attack"]*items[weapon]["bonus"])
+    damage = items_dict[weapon]["damage"] + (self["attack"]*items_dict[weapon]["bonus"])
     target["health"] -= damage
-    print(self["name"], "is", items[weapon]["action"], target["name"], "with", items[weapon]["name"] + ", dealing",
+    print(self["name"], "is", items_dict[weapon]["action"], target["name"], "with", items_dict[weapon]["name"] + ", dealing",
           str(damage), "damage!")
