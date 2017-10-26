@@ -28,9 +28,9 @@ player = {
 
     "defense": 0,
 
-    "weapon": "fists",
+    "weapon": "knife",
 
-    "armor": "no armor",
+    "armor": "clothes",
 
     "inventory": [],  # Simply add in item objects imported from items.py.
 

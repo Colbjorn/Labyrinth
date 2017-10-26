@@ -23,7 +23,7 @@ no_weapon = {
 }
 
 no_armor = {
-    "id": "no armor",
+    "id": "no_armor",
 
     "name": "Naked",
 
@@ -284,13 +284,13 @@ lightsaber = {  # Sample item subject to change
 kirill = {  # Sample item subject to change
     "id": "kirill",
 
-    "name": "Duelled Sword of Kirill",
+    "name": "Jeweled Sword of Kirill",
 
     "type": "Weapon",
 
     "action": "l33t h4xxing",
 
-    "description": "l33t h4xx3r Kirill, hacks everything to death with those mad skillz",
+    "description": "l33t m4s3r h4x0r Kirill, hacks everything to death with them mad skillzZz.",
 
     "usage": "equip",
 
@@ -306,6 +306,24 @@ kirill = {  # Sample item subject to change
 
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 1.0
+}
+
+clothes = {
+    "id": "clothes",
+
+    "name": "Clothes",
+
+    "type": "Armor",
+
+    "description": "Ordinary set of clothing.",
+
+    "usage": "equip",
+
+    "on use": lambda: itemeffects.equip(clothes),
+
+    "defense": 1,
+
+    "cost": 10
 }
 
 leather_armor = {
@@ -421,7 +439,7 @@ ultimate_armor = {
 items = {
     "fists": no_weapon,
 
-    "no armor": no_armor,
+    "no_armor": no_armor,
 
     "knife": knife,
 
@@ -443,13 +461,15 @@ items = {
 
     "lightsaber": lightsaber,
 
+    "clothes": clothes,
+
     "leather_armor": leather_armor,
 
     "wooden_armor": wooden_armor,
 
     "golden_armor": golden_armor,
 
-    "platinum armor": platinum_armor,
+    "platinum_armor": platinum_armor,
 
     "diamond_armor": diamond_armor,
 
@@ -459,7 +479,6 @@ items = {
 }
 
 items_list = [
-
     knife,
 
     leather_armor

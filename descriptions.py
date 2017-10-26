@@ -1,7 +1,7 @@
 # This module lists room descriptions because we really need these in their own file.
 
 room_hell = {
-    "name": "Hell"
+    "name": "Hell",
     
 "description":
     """You are surrounded by fire and you are now trapped inside.
@@ -157,24 +157,24 @@ room_witch = {
        green paint, painted on the door.   """
 }
 
-rooms = {
-    "Hell": room_hell,
-    "classroom": room_classroom,
-    "Death room": room_death,
-    "Dark and stormtrooper": room_stormtrooper,
-    "Forest room": room_forest,
-    "Skeleton room": room_skeleton,
-    "Mountain lab": room_mountain,
-    "Acid room": room_acid,
-    "Disco room": room_disco,
-    "Under lava room": room_lava,
-    "Ocean room": room_ocean,
-    "Twinkle planet": room_planet,
-    "Joker card room": room_joker,
-    "Snake room": room_snake,
-    "Coffee room": room_coffee,
-    "Deadly Witch Room": room_witch
-}
+room_descriptions = [
+    room_hell,
+    room_classroom,
+    room_death,
+    room_stormtrooper,
+    room_forest,
+    room_skeleton,
+    room_mountain,
+    room_acid,
+    room_disco,
+    room_lava,
+    room_ocean,
+    room_planet,
+    room_joker,
+    room_snake,
+    room_coffee,
+    room_witch
+]
 
 
 

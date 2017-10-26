@@ -2,21 +2,5 @@
 from player import player
 
 
-def equip(item):
-    if item["id"] in player["inventory"]:
-        if item["type"] == "Weapon":
-            if player["weapon"] is not None:  # If a weapon is being held, it'll move to the inventory.
-                player["inventory"].add(player["weapon"])
-            player["weapon"] = item["id"]
-            player["inventory"].remove(item["id"])
-        elif item["type"] == "Armor":
-            if player["armor"] is not None:  # If an armor is being worn, it'll move to the inventory.
-                player["inventory"].add(player["armor"])
-            player["armor"] = item["id"]
-            player["inventory"].remove(item["id"])
-            player["defense"] = item["defense"]
-        else:
-            print("Cannot equip that!")
-    else:
-        print("You don't have that item!")
+
 

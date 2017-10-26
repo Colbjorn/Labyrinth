@@ -42,10 +42,10 @@ def check_story_rooms_around(co_ordinates):
 
 
 # Turns inputted list into a string of items.
-def list_of_items(items):
+def list_of_items(itms):
     hold = ""
-    for item in items:
-        hold += (str(item["name"]) + ", ")
+    for item in itms:
+        hold += (items[item]["name"] + ", ")
     return hold.rstrip(", ")
 
 
@@ -81,8 +81,12 @@ def print_room(room):
 
 
 def print_inventory_items(items):
-    print("You have " + list_of_items(items) + ".")
-    print()
+    if len(items) > 0:
+        print("You have " + list_of_items(items) + ".")
+        print()
+    else:
+        print("You are not carrying anything.")
+        print()
 
 
 def print_exit(direction):
@@ -124,7 +128,7 @@ def execute_go(direction):
 def execute_take(item):
     taken = False
     for i in rooms[tuple(player["location"])]["items"]:
-        if (i["name"] == item) or (i["id"] == item):
+        if (items[i]["name"] == item) or (items[i]["id"] == item):
             player["inventory"].append(i)
             rooms[tuple(player["location"])]["items"].remove(i)
             taken = True
@@ -139,7 +143,7 @@ def execute_take(item):
 def execute_drop(item):
     dropped = False
     for i in player["inventory"]:
-        if (i["name"] == item) or (i["id"] == item):
+        if (items[i]["name"] == item) or (items[i]["id"] == item):
             player["inventory"].remove(i)
             rooms[tuple(player["location"])]["items"].append(i)
             dropped = True
@@ -177,6 +181,26 @@ def execute_status():
     print("Defense:", str(player["defense"]))
     print("Weapon:", items[player["weapon"]]["name"])
     print("Armor:", items[player["armor"]]["name"])
+
+
+def execute_equip(item):
+    itm = items[item]
+    if item in player["inventory"]:
+        if itm["type"] == "Weapon":
+            if player["weapon"] is not None:  # If a weapon is being held, it'll move to the inventory.
+                player["inventory"].append(player["weapon"])
+            player["weapon"] = item
+            player["inventory"].remove(item)
+        elif itm["type"] == "Armor":
+            if player["armor"] is not None:  # If an armor is being worn, it'll move to the inventory.
+                player["inventory"].append(player["armor"])
+            player["armor"] = item
+            player["inventory"].remove(item)
+            player["defense"] = itm["defense"]
+        else:
+            print("Cannot equip that!")
+    else:
+        print("You don't have that item!")
 
 
 def execute_help():
@@ -243,7 +267,13 @@ def execute_command(command):
         execute_help()
 
     elif command[0] == "inventory":
-        print_inventory_items(player["items"])
+        print_inventory_items(player["inventory"])
+
+    elif command[0] == "equip":
+        if len(command) > 1:
+            execute_equip(command[1])
+        else:
+            print("Equip what?")
 
     # The following code deals with context actions.
     elif command[0] == rooms[tuple(player["location"])]["interactables"]["context action"]\
@@ -396,7 +426,6 @@ def initiate_combat(monster):
 def main():
     make_room([0, 1])
     rooms[(0, 1)]["exits"].append("south")
-    rooms[(0, 1)]["items"].append(knife)
 
     # Main game loop
     while playing:
