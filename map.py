@@ -18,7 +18,7 @@ If you ever need help knowing what commands you can use, type HELP.""",#tbd
 
     "monster": "",
 
-    "entered": True,
+    "entered": False,
 
     "interactables": "",
 
@@ -43,7 +43,7 @@ definitely not anymore.''',
 
     "co-ordinates": None,  # Assigned when room is generated.
 
-    "monster": monsters_dict["devil cat"],
+    "monster": monsters_dict["ogre"],
 
     "entered": False,
 

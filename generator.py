@@ -14,20 +14,21 @@ def choose_monster(room):
     # This function chooses a monster equal to ya boy's in level and adds it to the room taken as an argument.
     # Also has a chance of spawning nothing at all.
     spawn = False
-    if random.randint(1, 2) == 1:
-        spawn = True
-    if spawn:
-        chosen = False
-        monsters_copy = copy(monsters)
-        while not chosen:
-            choice = random.choice(monsters_copy)
-            if choice["level"] > player["level"]:
-                monsters_copy.remove(choice)
-            else:
-                chosen = True
-                room["monster"] = choice
-    else:
-        room["monster"] = ""
+    if not room["monster"]:
+        if random.randint(1, 2) == 1:
+            spawn = True
+        if spawn:
+            chosen = False
+            monsters_copy = copy(monsters)
+            while not chosen:
+                choice = random.choice(monsters_copy)
+                if choice["level"] > player["level"]:
+                    monsters_copy.remove(choice)
+                else:
+                    chosen = True
+                    room["monster"] = choice
+        else:
+            room["monster"] = ""
 
 
 def choose_item(room):
@@ -80,7 +81,6 @@ def make_room(co_ordinates):
     for i in valid_rms:
         if rooms[tuple(i)] in story_rooms:
             story_near = True
-    choose_monster(new_room)
     location = copy(random.choice(room_descriptions))
     new_room["name"] = location["name"]
     new_room["description"] = location["description"]
@@ -90,6 +90,7 @@ def make_room(co_ordinates):
         story_room_counter += 1
         new_room["co-ordinates"] = co_ordinates
     new_room["number"] = len(rooms) + 1
+    choose_monster(new_room)
     rooms[tuple(co_ordinates)] = new_room
 
 

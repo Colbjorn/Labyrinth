@@ -31,7 +31,7 @@ def stun_attack(self, target):
 def punch_attack(self, target):
     damage = random.randint(1,3) + (self["attack"]*0.5)
     target["health"] -= (damage * (1 - player["defense"]/100))
-    print(self["name", "is punching", target["name"], "! They've taken", damage, "damage."])
+    print(self["name"], "is punching", target["name"], "! They've taken", damage, "damage.")
 
 
 def throw_attack(self, target):

@@ -1,6 +1,6 @@
 # This module has all functions that are called when an interactable's contextual action is called.
 from gameparser import normalise_input
-from player import player
+from player import *
 
 
 def story_npc_1():
@@ -11,7 +11,9 @@ def story_npc_1():
         elif normalise_input(inpt)[0] == "skip":
             print('''"Not much for exposition, are you?" The villager says, dejected. "Fine, here\'s your loot.
 Go on now. Go beat the game since you're in such a rush."''')
-            # TODO: GIVE REWARD.
+            print("Obtained a new sword!")
+            modified_amount(player["inventory"], "new sword", "append")
+            input()
             return True
     print('"Thank you for killing that monstrosity, strange traveller. Were it not for you, I may have died.')
     if not skip():
@@ -44,7 +46,9 @@ As his sobs slow down, he looks back up at you.''')
         input()
         print('''"Please. Please, try to find out what is happening. The world can\'t continue to exist like this, it just
 can\'t! Here, I know it\'s not much, but I hope this helps"''')
-    #TODO: Make a reward.
+        print("Obtained a new sword!")
+        modified_amount(player["inventory"], "new sword", "append")
+        input()
 
 
 def story_npc_2():
@@ -116,6 +120,7 @@ This armor will deffinetly be effective in your travels.''')
         modified_amount(player["inventory"], "golden armor", "append")
         input()
 
+
 def door():
     def skip():
         inpt = input("If you wish to skip the dialogue, SKIP now.")
@@ -123,18 +128,18 @@ def door():
             pass
         elif normalise_input(inpt)[0] == "skip":
             print('''you beat the game. It looks like you don't care so why should I?''')
-            print("Congrats you unthankfull loser")
+            print("Congrats you ingrate")
             input()
             import sys
             sys.exit()
             return True
     if not skip():
         print('''You didn't want to leave. You have a duty to save these lands but you just aren't strong enough
-your time in this place has been the worst time of your life. The monsters and terifying and strong,
+your time in this place has been the worst time of your life. The monsters and terrifying and strong,
 you've nearly died countless times. It's not your duty to save reality, it's someone better's duty.''')
         input()
         print("Congratulation!!! You've Survived! You can now return home and live the rest of you life in peace.")
-        print("Hopefully Azeroth, Destroyer of worlds doesn't find your reality")
+        print("Hopefully Azgoth, Destroyer of worlds doesn't find your reality")
         input()
         import sys
         sys.exit()
