@@ -1,5 +1,5 @@
 # Stores the map. Room 1 is always the same. The other rooms are generated once the game begins.
-from monsters import monsters
+from monsters import monsters_dict
 from interactables import *
 
 room_1 = {
@@ -41,7 +41,7 @@ definitely not anymore.''',
 
     "co-ordinates": None,  # Assigned when room is generated.
 
-    "monster": "",
+    "monster": monsters_dict["devil cat"],
 
     "entered": False,
 

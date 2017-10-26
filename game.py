@@ -471,7 +471,6 @@ def level_up_check(experience):
         player["attack"] += player["level"]
         player["max health"] += 5
         player["health"] = player["max health"]
-    print(player["experience"])
 
 
 def initiate_combat(manster):
