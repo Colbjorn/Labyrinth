@@ -50,6 +50,31 @@ definitely not anymore.''',
     "number": 10
 }
 
+story_room_2 = {
+    "name": "Laboratorium",
+
+    "description":
+    '''You now find yourself within what appears to be a laboratory. The walls, however, seem clear as if made of glass.
+There is nothing else within the room besides a table at its center atop which, most prominently, is a glass dome. The 
+rest of the table seems to be covered in papers which seem to be the notes and scribbles of a man of questionable 
+sanity. While a lot of the scribbles on the papers seem like gibberish, some seem strangely relevant to your situation...''',
+
+    "exits": [],
+
+    "items": [],
+
+    "co-ordinates": None,
+
+    "monster": "",
+
+    "entered": False,
+
+    "interactables": story_npc_2,
+
+    "number": 10
+}
 rooms = {
     (0, 0): room_1,
 }
+
+story_rooms = [story_room_1, story_room_2]

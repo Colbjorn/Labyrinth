@@ -27,20 +27,33 @@ def check_story_rooms_around(co_ordinates):
         if room_check(i):
             valid_rms.append(i)
     for i in valid_rms:
-        if rooms[tuple(i)]["number"] == 10 and not rooms[tuple(i)]["entered"]:
-            if i == north:
-                print("You hear a yell coming from the north. It might be worth checking out.")
-                player["last important location"] = north
-            elif i == east:
-                print("You hear a yell coming from the east. It might be worth checking out.")
-                player["last important location"] = east
-            elif i == south:
-                print("You hear a yell coming from the south. It might be worth checking out.")
-                player["last important location"] = south
-            elif i == west:
-                print("You hear a yell coming from the west. It might be worth checking out.")
-                player["last important location"] = west
-
+        if rooms[tuple(i)] in story_rooms and not rooms[tuple(i)]["entered"]:
+            if rooms[tuple(i)] == story_rooms[0]:
+                if i == north:
+                    print("You hear a yell coming from the north. It might be worth checking out.")
+                    player["last important location"] = north
+                elif i == east:
+                    print("You hear a yell coming from the east. It might be worth checking out.")
+                    player["last important location"] = east
+                elif i == south:
+                    print("You hear a yell coming from the south. It might be worth checking out.")
+                    player["last important location"] = south
+                elif i == west:
+                    print("You hear a yell coming from the west. It might be worth checking out.")
+                    player["last important location"] = west
+            elif rooms[tuple(i)] == story_rooms[1]:
+                if i == north:
+                    print("A strong gust of wind blows from the north.")
+                    player["last important location"] = north
+                elif i == east:
+                    print("A strong gust of wind blows from the east.")
+                    player["last important location"] = east
+                elif i == south:
+                    print("A strong gust of wind blows from the south.")
+                    player["last important location"] = south
+                elif i == west:
+                    print("A strong gust of wind blows from the west.")
+                    player["last important location"] = west
 
 # Turns inputted list into a string of items.
 def list_of_items(itms):
@@ -60,9 +73,6 @@ def print_room_items(room):
 
 
 def print_room(room):
-    call_health(player["health"], player["max health"])
-    print("Level:", str(player["level"]))
-    print()
     # Display room name
     print(room["name"].upper())
     print()
@@ -116,14 +126,24 @@ def is_valid_exit(exits, chosen_exit):
     return chosen_exit in exits
 
 
+def move(direction, co_ordinates):
+    # changes player coords to next room
+    if direction == "north":
+        co_ordinates[1] += 1
+    elif direction == "east":
+        co_ordinates[0] += 1
+    elif direction == "south":
+        co_ordinates[1] -= 1
+    elif direction == "west":
+        co_ordinates[0] -= 1
+
+
 def execute_go(direction):
+    rooms[tuple(player["location"])]["entered"] = True
     if is_valid_exit(rooms[tuple(player["location"])]["exits"], direction):
-        rooms[tuple(player["location"])]["entered"] = True
         move(direction, player["location"])
-        print(player["location"])
         if not rooms[tuple(player["location"])]["entered"]:
             rooms_create_around(player["location"])
-        print(rooms[tuple(player["location"])]["entered"])
     else:
         print("You cannot go there.")
 
@@ -157,26 +177,27 @@ def modified_amount(array, itemname, action):
 
 
 def execute_take(item):
+    rooms[tuple(player["location"])]["entered"] = True
     taken = modified_amount(rooms[tuple(player["location"])]["items"], item, "remove")
     if not taken:
         print("Can't take that!")
     else:
         print("You took", items_dict[item]["name"] + ".")
         modified_amount(player["inventory"], item, "append")
-    rooms[tuple(player["location"])]["entered"] = True
 
 
 def execute_drop(item):
+    rooms[tuple(player["location"])]["entered"] = True
     dropped = modified_amount(player["inventory"], item, "remove")
     if not dropped:
         print("Can't drop that!")
     else:
-        print("You dropped", item + ".")
+        print("You dropped", items_dict[item]["name"] + ".")
         modified_amount(rooms[tuple(player["location"])]["items"], item, "append")
-    rooms[tuple(player["location"])]["entered"] = True
 
 
 def execute_describe(item):
+    rooms[tuple(player["location"])]["entered"] = True
     itm = items_dict[item]
     is_there = False
     for i in player["inventory"]:
@@ -197,6 +218,7 @@ def execute_describe(item):
 
 
 def execute_status():
+    rooms[tuple(player["location"])]["entered"] = True
     print(player["name"].upper())
     call_health(player["health"], player["max health"])
     print("Level:", str(player["level"]))
@@ -209,28 +231,29 @@ def execute_status():
 
 
 def execute_equip(item):
-    itm = items_dict[item]
+    rooms[tuple(player["location"])]["entered"] = True
     is_there = False
-    if itm["type"] == "Weapon":
-        is_there = modified_amount(player["inventory"], item, "remove")
-        if is_there:
-            if player["weapon"] is not None:  # If a weapon is being held, it'll move to the inventory.
-                modified_amount(player["inventory"], player["weapon"], "append")
-            player["weapon"] = item
-    elif itm["type"] == "Armor":
-        is_there = modified_amount(player["inventory"], item, "remove")
-        if is_there:
-            if player["armor"] is not None:  # If an armor is being worn, it'll move to the inventory.
-                modified_amount(player["inventory"], player["armor"], "append")
-            player["armor"] = item
-            player["defense"] = itm["defense"]
-    else:
-        print("Cannot equip that!")
+    if item in items_dict.keys():
+        itm = items_dict[item]
+        if itm["type"] == "Weapon":
+            is_there = modified_amount(player["inventory"], item, "remove")
+            if is_there:
+                if player["weapon"] is not None:  # If a weapon is being held, it'll move to the inventory.
+                    modified_amount(player["inventory"], player["weapon"], "append")
+                player["weapon"] = item
+        elif itm["type"] == "Armor":
+            is_there = modified_amount(player["inventory"], item, "remove")
+            if is_there:
+                if player["armor"] is not None:  # If an armor is being worn, it'll move to the inventory.
+                    modified_amount(player["inventory"], player["armor"], "append")
+                player["armor"] = item
+                player["defense"] = itm["defense"]
     if not is_there:
-        print("You don't have that item!")
+        print("Can't equip that!")
 
 
 def execute_help():
+    rooms[tuple(player["location"])]["entered"] = True
     print("Due to a large variety of commands, not all will be shown to you all the time or it'd be a truly painful experience.")
     print("Luckily, this here menu's here to help!")
     print()
@@ -326,18 +349,6 @@ def menu(exits, room_items, inv_items, coords):
     return normalised_user_input
 
 
-def move(direction, co_ordinates):
-    # changes player coords to next room
-    if direction == "north":
-        co_ordinates[1] += 1
-    elif direction == "east":
-        co_ordinates[0] += 1
-    elif direction == "south":
-        co_ordinates[1] -= 1
-    elif direction == "west":
-        co_ordinates[0] -= 1
-
-
 def combat_menu(monster):
     choice = False
     while not choice:
@@ -387,6 +398,10 @@ def initiate_combat(manster):
     # Entire combat loop.
     monster = deepcopy(manster)
     monster["health"] = monster["max health"]
+    monster["loot"] = []
+    for loot in manster["loot"]:
+        if random.randint(1, 10) == 1:
+            monster["loot"].append(loot)
 
     def theyded():
         # Checks health. If anyone dies, stops the fighting appropriately.

@@ -7,6 +7,9 @@ from descriptions import room_descriptions
 from items import items_list
 
 
+story_room_counter = 0
+
+
 def choose_monster(room):
     # This function chooses a monster equal to ya boy's in level and adds it to the room taken as an argument.
     # Also has a chance of spawning nothing at all.
@@ -58,21 +61,51 @@ def make_room(co_ordinates):
 
         "used": False,
 
-        "number": len(rooms)+1
+        "number": 0
     }
+    story_near = False
+    north = copy(player["location"])
+    north[1] += 1
+    east = copy(player["location"])
+    east[0] += 1
+    south = copy(player["location"])
+    south[1] -= 1
+    west = copy(player["location"])
+    west[0] -= 1
+    rms = [north, east, south, west]
+    valid_rms = []
+    for i in rms:
+        if room_check(i):
+            valid_rms.append(i)
+    for i in valid_rms:
+        if rooms[tuple(i)] in story_rooms:
+            story_near = True
     choose_monster(new_room)
     location = copy(random.choice(room_descriptions))
     new_room["name"] = location["name"]
     new_room["description"] = location["description"]
-    if (len(rooms) + 1) == 10:
-        new_room = story_room_1
+    global story_room_counter
+    if check_story_room_distance() and (story_room_counter <= len(story_rooms)-1) and not story_near:
+        new_room = story_rooms[story_room_counter]
+        story_room_counter += 1
         new_room["co-ordinates"] = co_ordinates
+    new_room["number"] = len(rooms) + 1
     rooms[tuple(co_ordinates)] = new_room
 
 
 def room_check(new_room_coordinates):
     # This function takes in a set of coordinates and checks whether a room with those coordinates already exists.
     if tuple(new_room_coordinates) in rooms:
+        return True
+    else:
+        return False
+
+
+def check_story_room_distance():
+    # Checks if the story room has been entered and if it has been at least a certain number of rooms before a new
+    # story room spawns.
+    story_room_spawn_distance = 10
+    if (rooms[tuple(player["location"])]["number"] >= rooms[tuple(player["last important location"])]["number"] + story_room_spawn_distance) and rooms[tuple(player["last important location"])]["entered"]:
         return True
     else:
         return False

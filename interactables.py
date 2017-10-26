@@ -11,3 +11,13 @@ story_npc_1 = {
 
     "used": False
 }
+
+story_npc_2 = {
+    "description": "The papers on the desk tempt you to read them.",
+
+    "context action": "inspect",
+
+    "context result": interactable_effects.story_npc_2,
+
+    "used": False
+}

@@ -46,3 +46,50 @@ As his sobs slow down, he looks back up at you.''')
 can\'t! Here, I know it\'s not much, but I hope this helps"''')
     #TODO: Make a reward.
 
+
+def story_npc_2():
+    def skip():
+        inpt = input("If you wish to skip the event, SKIP now.")
+        if len(inpt) == 0:
+            pass
+        elif normalise_input(inpt)[0] == "skip":
+            print('''Things happen and you find a thing.''')
+            # TODO: GIVE REWARD.
+            return True
+    print("You decide to approach the desk in order to read the notes spread on the table.")
+    if not skip():
+        print('''As you near the table, you glance at the glass dome at the table's center. You see within it, at its
+center, a small table with an even smaller glass dome on it. There also seems to be a miniature person looking 
+into the glass dome...''')
+        input()
+        print('''You suddenly feel like you are being watched, and you could swear that the room has just gotten
+somewhat darker than it was before. You look above you and realize that the room is not a regular square
+room; it is in fact a glass dome.''')
+        input()
+        print('''Towering above the dome is what seems to be a humanoid figure, currently looking up into the sky.
+From its mannerisms, eerily similar to yours, you assume it is just as perplexed by its own situation as you are by
+yours.''')
+        input()
+        print('''You decide to not give it much further thought, and turn back to the table to read some of the notes.
+You spot from the corner of your eye that the figure outside has turned around towards your direction, and the
+figure within the small dome has turned towards its own table. Rather than feeling like this situation doesn't make
+sense, you feel like the very meaning of sense itself has just been lost to the ether. You proceed to read the notes.''')
+        input()
+        print('''Unfortunately due to how disorganized the author was, the notes are mostly written in a bullet
+point format. The parts that stand out to you are as follows:''')
+        input()
+        print('''"EFFECT?
+- Anomaly confirmed extradimensional
+- Transdimensional effects directly observed
+- Test successful
+CONSEQUENCES?
+- Merging
+ENTITY POSSIBLY RESPONSIBLE??
+- effects?
+- entity
+-entity
+no no no no no"''')
+        input()
+        print('''The rest of the pages are either gibberish, illegible, or repetitions of the words "no", "death" and, for some reason,
+"digestion". Buried underneath all the pages you notice a faint glimmer...''')
+        # TODO REWARD
