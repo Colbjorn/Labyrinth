@@ -154,6 +154,12 @@ def modified_amount(array, itemname, action):
         else:
             array.append([itemname, 1])
             return True
+    elif action == "check":
+        for item in array:
+            if item[0] == itemname:
+                return True
+        else:
+            return False
 
 
 def execute_take(item):
@@ -208,6 +214,22 @@ def execute_status():
     print("Armor:", items_dict[player["armor"]]["name"])
 
 
+def execute_use(item, target):
+    if check_if_user(target):
+        use_target = player
+    else:
+        use_target = monster_dict[target]
+    if use_target == player or use_target in monsters_dict:
+        if item["usage"] == "heal":
+            use_target["health"] += item["heal"]
+            if use_target["health"] > use_target["max health"]:
+                use_target["health"] = use_target["max health"]
+        if item["usage"] == "damage":
+            use_target["health"] -= item["damage"]
+            if use_target["health"] < 0:
+                use_target["health"] = 0
+
+
 def execute_equip(item):
     itm = items_dict[item]
     is_there = False
@@ -221,8 +243,9 @@ def execute_equip(item):
         is_there = modified_amount(player["inventory"], item, "remove")
         if is_there:
             if player["armor"] is not None:  # If an armor is being worn, it'll move to the inventory.
+                
                 modified_amount(player["inventory"], player["armor"], "append")
-            player["armor"] = item
+            player["armor"] = itm
             player["defense"] = itm["defense"]
     else:
         print("Cannot equip that!")
@@ -268,12 +291,18 @@ def execute_command(command):
             print("Go where?")
 
     elif command[0] == "take":
+        item = " ".join(command[1:])
+        command[1] = item
+        command[2:] = []
         if len(command) > 1:
             execute_take(command[1])
         else:
             print("Take what?")
 
     elif command[0] == "drop":
+        item = " ".join(command[1:])
+        command[1] = item
+        command[2:] = []
         if len(command) > 1:
             execute_drop(command[1])
         else:
@@ -297,11 +326,30 @@ def execute_command(command):
         print_inventory_items(player["inventory"])
 
     elif command[0] == "equip":
+        item = " ".join(command[1:])
+        command[1] = item
+        command[2:] = []
         if len(command) > 1:
             execute_equip(command[1])
         else:
             print("Equip what?")
 
+    elif command[0] == "use":
+        item = " ".join(command[1:(command.index("on"))])
+        target = " ".join(command[(command.index("on")) + 1:])
+        command[1] = item
+        command[2] = target
+        command[3:] = []
+        if modified_amount(player["inventory"], command[1], "check") and (command[2] in monsters_dict or check_if_user(command[2])):
+            execute_use(items_dict[command[1]], command[2])
+        elif command[1] in player["inventory"]:
+            print("Use " + command[1] + " on who?")
+        elif command[2] in monsters_dict or check_if_user(command[2]):
+            print("Use what on " + command[2] + "?")
+            print(command[1])
+        else:
+            print("Use what on who?")
+            
     # The following code deals with context actions.
     elif command[0] == rooms[tuple(player["location"])]["interactables"]["context action"]\
             and not rooms[tuple(player["location"])]["interactables"]["used"]:
@@ -312,6 +360,9 @@ def execute_command(command):
     else:
         print("This makes no sense.")
 
+def check_if_user(target):
+    if target == "self" or target == "myself" or target == "me" or target == player["name"]:
+        return True
 
 def menu(exits, room_items, inv_items, coords):
     # Display menu
@@ -417,6 +468,7 @@ def initiate_combat(manster):
             return True
 
     print(monster["name"], "attacks!")
+    print(monster["health"])
     while 1:
         if theyded():
             break

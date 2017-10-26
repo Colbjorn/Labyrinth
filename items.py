@@ -434,6 +434,24 @@ ultimate_armor = {
     "cost": 1000
 }
 
+health_potion = {
+    "id": "health_potion",
+
+    "name": "Health Potion",
+
+    "type": "Consumable",
+
+    "description": "Drink it and it'll somehow heal you",
+
+    "usage": "heal",
+
+    "on use": lambda: game.heal(health_potion, target),
+
+    "heal": 25,
+
+    "cost": 1000
+}
+
 # It is of utmost importance that all dictionaries are saved within a list so that it is possible to call them
 # using an index or a loop!
 items_dict = {
@@ -475,11 +493,14 @@ items_dict = {
 
     "ultimatanium armor": ultimate_armor,
 
+    "health potion": health_potion
 
 }
 
 items_list = [
     knife,
+
+    health_potion,
 
     leather_armor
 ]
