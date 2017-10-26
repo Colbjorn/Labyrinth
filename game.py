@@ -438,15 +438,16 @@ def initiate_combat(manster):
     # Entire combat loop.
     monster = deepcopy(manster)
     monster["health"] = monster["max health"]
-
+    
     def theyded():
         # Checks health. If anyone dies, stops the fighting appropriately.
         if monster["health"] <= 0:
             print(monster["name"], "has been slain!")
             while monster["loot"] != []:
                 # Takes literally everything.
-                modified_amount(player["inventory"], monster["loot"][0][0], "append")
-                print("Obtained", monster["loot"][0][0] + "!")
+                if random.randint(1,100) > items_dict[monster["loot"][0][0]]["rarity"]:
+                    modified_amount(player["inventory"], monster["loot"][0][0], "append")
+                    print("Obtained", monster["loot"][0][0] + "!")
                 modified_amount(monster["loot"], monster["loot"][0][0], "remove")
             player["experience"] += monster["experience"]
             print("Gained", monster["experience"], "experience!")
