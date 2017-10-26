@@ -454,3 +454,28 @@ monsters = [goblin,
             dragon,
 
             giant_dragon]
+
+
+monsters_dict = {
+    "goblin": goblin,
+    
+    "skeleton": skeleton,
+    
+    "slime": slime,
+    
+    "zombie": zombie,
+    
+    "orc": orc,
+    
+    "ogre": ogre,
+    
+    "evil unicorn": evil_unicorn,
+    
+    "gang of bandits": gang_of_bandits,
+    
+    "devil cat": devil_cat,
+    
+    "dragon": dragon,
+    
+    "giant dragon": giant_dragon
+    }

@@ -18,6 +18,8 @@ no_weapon = {
 
     "cost": 0,
 
+    "rarity": 1,
+
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.1
 }
@@ -35,7 +37,9 @@ no_armor = {
 
     "defense": 0,
 
-    "cost": 0
+    "cost": 0,
+
+    "rarity": 1
 }
 
 knife = {  # Sample item subject to change
@@ -60,6 +64,8 @@ knife = {  # Sample item subject to change
     "damage": 10,  # [Min, max]
 
     "cost": 10,
+    
+    "rarity": 5,
 
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.5
@@ -88,6 +94,8 @@ bad_sword = {  # Sample item subject to change
 
     "cost": 15,
 
+    "rarity": 5,
+
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.6
 }
@@ -114,6 +122,8 @@ sword = {  # Sample item subject to change
     "damage": 20,  # [Min, max]
 
     "cost": 20,
+
+    "rarity": 15,
 
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.7
@@ -142,6 +152,8 @@ new_sword = {  # Sample item subject to change
 
     "cost": 25,
 
+    "rarity": 30,
+
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.7
 }
@@ -168,6 +180,8 @@ glowing_sword = {  # Sample item subject to change
     "damage": 30,  # [Min, max]
 
     "cost": 30,
+
+    "rarity": 70,
 
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.7
@@ -196,6 +210,8 @@ old_hammer = {  # Sample item subject to change
 
     "cost": 10,
 
+    "rarity": 5,
+
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.6
 }
@@ -222,6 +238,8 @@ hammer = {  # Sample item subject to change
     "damage": 20,  # [Min, max]
 
     "cost": 15,
+
+    "rarity": 15,
 
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.6
@@ -250,6 +268,8 @@ fire_hammer = {  # Sample item subject to change
 
     "cost": 20,
 
+    "rarity": 30,
+
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.6
 }
@@ -276,6 +296,8 @@ lightsaber = {  # Sample item subject to change
     "damage": 100,  # [Min, max]
 
     "cost": 80,
+
+    "rarity": 65,
 
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 0.9
@@ -304,6 +326,8 @@ kirill = {  # Sample item subject to change
 
     "cost": 80,
 
+    "rarity": 99,
+
     # Bonuses could be either additive or multiplicative (e.g. 1.5 bonus strength adds 1.5 x strength to damage)
     "bonus": 1.0
 }
@@ -323,6 +347,8 @@ clothes = {
 
     "defense": 1,
 
+    "rarity": 1,
+
     "cost": 10
 }
 
@@ -341,7 +367,9 @@ leather_armor = {
 
     "defense": 15,
 
-    "cost": 50
+    "cost": 50,
+    
+    "rarity": 15
 }
 
 wooden_armor = {
@@ -359,7 +387,9 @@ wooden_armor = {
 
     "defense": 20,
 
-    "cost": 60
+    "cost": 60,
+
+    "rarity": 25
 }
 
 golden_armor = {
@@ -377,7 +407,9 @@ golden_armor = {
 
     "defense": 35,
 
-    "cost": 100
+    "cost": 100,
+
+    "rarity": 40
 }
 
 platinum_armor = {
@@ -394,6 +426,8 @@ platinum_armor = {
     "on use": lambda: itemeffects.equip(platinum_armor),
 
     "defense": 50,
+    
+    "rarity": 60,
 
     "cost": 250
 }
@@ -413,6 +447,8 @@ diamond_armor = {
 
     "defense": 75,
 
+    "rarity": 80,
+
     "cost": 500
 }
 
@@ -430,6 +466,28 @@ ultimate_armor = {
     "on use": lambda: itemeffects.equip(ultimate_armor),
 
     "defense": 80,
+
+    "rarity": 99,
+
+    "cost": 1000
+}
+
+health_potion = {
+    "id": "health_potion",
+
+    "name": "Health Potion",
+
+    "type": "Consumable",
+
+    "description": "Drink it and it'll somehow heal you",
+
+    "usage": "heal",
+
+    "on use": lambda: game.heal(health_potion, target),
+
+    "heal": 25,
+
+    "rarity": 50,
 
     "cost": 1000
 }
@@ -475,11 +533,48 @@ items_dict = {
 
     "ultimatanium armor": ultimate_armor,
 
+    "health potion": health_potion
 
 }
 
 items_list = [
     knife,
 
-    leather_armor
+    health_potion,
+
+    leather_armor,
+    
+    bad_sword,
+    
+    sword,
+
+    new_sword,
+    
+    glowing_sword,
+    
+    old_hammer,
+    
+    hammer,
+    
+    kirill,
+    
+    fire_hammer,
+    
+    lightsaber,
+    
+    clothes,
+    
+    leather_armor,
+    
+    wooden_armor,
+    
+    golden_armor,
+    
+    platinum_armor,
+    
+    diamond_armor,
+    
+    ultimate_armor,
+    
+    health_potion
 ]

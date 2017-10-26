@@ -32,7 +32,7 @@ player = {
 
     "armor": "clothes",
 
-    "inventory": [["leather armor", 1], ["sword", 2]],  # Simply add in item objects imported from items.py.
+    "inventory": [["leather armor", 1], ["sword", 2], ["health potion", 1]],  # Simply add in item objects imported from items.py.
 
     "spells": []
 }
