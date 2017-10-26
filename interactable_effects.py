@@ -54,7 +54,9 @@ def story_npc_2():
             pass
         elif normalise_input(inpt)[0] == "skip":
             print('''Things happen and you find a thing.''')
-            # TODO: GIVE REWARD.
+            print("You Were Rewarded A Lightsaber")
+            modified_amount(player["inventory"], "lightsaber", "append")
+            input()
             return True
     print("You decide to approach the desk in order to read the notes spread on the table.")
     if not skip():
@@ -91,5 +93,48 @@ ENTITY POSSIBLY RESPONSIBLE??
 no no no no no"''')
         input()
         print('''The rest of the pages are either gibberish, illegible, or repetitions of the words "no", "death" and, for some reason,
-"digestion". Buried underneath all the pages you notice a faint glimmer... You escape.''')
-        # TODO REWARD
+"digestion". Buried underneath all the pages you notice a faint glimmer...''')
+        print("You Were Rewarded A Lightsaber")
+        modified_amount(player["inventory"], "lightsaber", "append")
+        input()
+
+def red_cross():
+    def skip():
+        inpt = input("If you wish to skip the dialogue, SKIP now.")
+        if len(inpt) == 0:
+            pass
+        elif normalise_input(inpt)[0] == "skip":
+            print('''since you're too lazy to dig for treasure, here's the loot.''')
+            print("You Were Rewarded Golden Armor")
+            modified_amount(player["inventory"], "golden armor", "append")
+            return True
+    if not skip():
+        print('''"You begin to dig into the red cross. The sand was course and got everywhere, makeing it very difficult
+to dig effectively. After some time, and a few breaks, you strike a large wooden chest. in the chest is a set of golden, glimmering armor.
+This armor will deffinetly be effective in your travels.''')
+        print("You Were Rewarded Golden Armor")
+        modified_amount(player["inventory"], "golden armor", "append")
+        input()
+
+def door():
+    def skip():
+        inpt = input("If you wish to skip the dialogue, SKIP now.")
+        if len(inpt) == 0:
+            pass
+        elif normalise_input(inpt)[0] == "skip":
+            print('''you beat the game. It looks like you don't care so why should I?''')
+            print("Congrats you unthankfull loser")
+            input()
+            import sys
+            sys.exit()
+            return True
+    if not skip():
+        print('''You didn't want to leave. You have a duty to save these lands but you just aren't strong enough
+your time in this place has been the worst time of your life. The monsters and terifying and strong,
+you've nearly died countless times. It's not your duty to save reality, it's someone better's duty.''')
+        input()
+        print("Congratulation!!! You've Survived! You can now return home and live the rest of you life in peace.")
+        print("Hopefully Azeroth, Destroyer of worlds doesn't find your reality")
+        input()
+        import sys
+        sys.exit()

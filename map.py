@@ -73,10 +73,57 @@ sanity. While a lot of the scribbles on the papers seem like gibberish, some see
 
     "interactables": story_npc_2,
 
-    "number": 10
+    "number": 20
 }
 rooms = {
     (0, 0): room_1,
 }
 
-story_rooms = [story_room_1, story_room_2]
+story_room_3 = {
+    "name": "Island",
+
+    "description":
+    '''you find yourself on a small island. Stranded, you see only the ocean touching the horizon.
+a single palm tree can be seen om this small mound of sand. It seems the coconuts that once grew on
+the tree has been split open and eaten. Perhaps somebody has been through here before?
+you notice a large red cross by your feet''',
+
+    "exits": [],  # Assigned when room is generated.
+
+    "items": [],
+
+    "co-ordinates": None,  # Assigned when room is generated.
+
+    "monster": "",
+
+    "entered": False,
+
+    "interactables": story_npc_1,
+
+    "number": 30
+}
+
+story_room_4 = {
+    "name": "Empty Room",
+
+    "description":
+    '''You enter a near empty, white room. In the middle of the room is a door.
+Through the door, you see your old home. Your family and friends and living their lives,
+you recognise your hometown and get a great sence of relief.''',
+
+    "exits": [],  # Assigned when room is generated.
+
+    "items": [],
+
+    "co-ordinates": None,  # Assigned when room is generated.
+
+    "monster": "",
+
+    "entered": False,
+
+    "interactables": door,
+
+    "number": 40
+}
+
+story_rooms = [story_room_1, story_room_2, story_room_3, story_room_4]
