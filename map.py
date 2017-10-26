@@ -3,10 +3,12 @@ from monsters import monsters_dict
 from interactables import *
 
 room_1 = {
-    "name": "Labyrinth Entrance",
+    "name": "The Beginning",
 
     "description":
-    """DESCRIPTION HERE""",#tbd
+    """Welcome to the Labyrinth! For some mysterious reason, various dimensions have begun to mix into each other. It 
+is up to you to try to escape this mayhem before something very, very bad occurs.
+If you ever need help knowing what commands you can use, type HELP.""",#tbd
 
     "exits": ["north"],
 

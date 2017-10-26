@@ -10,7 +10,7 @@ goblin = {  # Sample monster subject to change.
 
     "level": 1,
 
-    "max health": 15,
+    "max health": 20,
     # Monsters will always set their (current) health equal to the max at the beginning of combat.
 
     "attack": 0,
@@ -20,7 +20,6 @@ goblin = {  # Sample monster subject to change.
     "attacks": [  # TODO Nerf this shit it's 2stronk4me
         attacks.scratch_attack,
         attacks.doubleslap_attack,
-        attacks.fiveslap_attack,
     ],
 
     "loot": [
@@ -40,7 +39,7 @@ skeleton = {
 
     "level": 1,
 
-    "max health": 8,
+    "max health": 10,
 
     "attack": 2,
 
@@ -104,7 +103,7 @@ zombie = {
 
     "level": 2,
 
-    "max health": 20,
+    "max health": 35,
 
     "attack": 4,
 
@@ -135,7 +134,7 @@ orc = {
 
     "level": 2,
 
-    "max health": 12,
+    "max health": 40,
 
     "attack": 4,
 
@@ -201,7 +200,7 @@ evil_unicorn = {
 
     "level": 3,
 
-    "max health": 25,
+    "max health": 30,
 
     "attack": 5,
 
@@ -302,7 +301,7 @@ devil_cat = {
 
     "level": 6,
 
-    "max health": 40,
+    "max health": 66,
 
     "attack": 6,
 

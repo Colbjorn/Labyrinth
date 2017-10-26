@@ -55,6 +55,7 @@ def check_story_rooms_around(co_ordinates):
                     print("A strong gust of wind blows from the west.")
                     player["last important location"] = west
 
+
 # Turns inputted list into a string of items.
 def list_of_items(itms):
     hold = ""
@@ -240,8 +241,8 @@ def execute_use(item, target):
     if check_if_user(target):
         use_target = player
     else:
-        use_target = monster_dict[target]
-    if use_target == player or use_target in monsters_dict:
+        use_target = target
+    if use_target == player or use_target in monsters:
         if item["usage"] == "heal":
             use_target["health"] += item["heal"]
             if use_target["health"] > use_target["max health"]:
@@ -312,8 +313,7 @@ def execute_help():
     print()
     print("The following actions can be done in combat:")
     print("ATTACK will attack the enemy with your equipped weapon.")
-    print("USE item ON a target will use said item on that target. Don't forget the target!")
-    print("It would be a shame if you used a healing potion on an enemy, or a vial of poison on yourself!")
+    print("USE item ON a target will use said item on that target. SELF targets yourself.")
     print("RUN will attempt to run. Enemies get a free hit on you if you fail. If you succeed you will run in a random direction,")
     print("so be wise when fleeing!")
 
@@ -373,18 +373,19 @@ def execute_command(command):
             print("Equip what?")
 
     elif command[0] == "use":
-        item = " ".join(command[1:(command.index("on"))])
-        target = " ".join(command[(command.index("on")) + 1:])
-        command[1] = item
-        command[2] = target
-        command[3:] = []
-        if modified_amount(player["inventory"], command[1], "check") and (command[2] in monsters_dict or check_if_user(command[2])):
-            execute_use(items_dict[command[1]], command[2])
-        elif command[1] in player["inventory"]:
-            print("Use " + command[1] + " on who?")
-        elif command[2] in monsters_dict or check_if_user(command[2]):
-            print("Use what on " + command[2] + "?")
-            print(command[1])
+        if "on" in command:
+            item = " ".join(command[1:(command.index("on"))])
+            target = " ".join(command[(command.index("on")) + 1:])
+            command[1] = item
+            command[2] = target
+            command[3:] = []
+            if modified_amount(player["inventory"], command[1], "check") and (command[2] in monsters_dict or check_if_user(command[2])):
+                execute_use(items_dict[command[1]], command[2])
+                modified_amount(player["inventory"], command[1], "remove")
+            elif command[1] in player["inventory"]:
+                print("Use " + command[1] + " on who?")
+            elif command[2] in monsters_dict or check_if_user(command[2]):
+                print("Use what on " + command[2] + "?")
         else:
             print("Use what on who?")
             
@@ -398,9 +399,11 @@ def execute_command(command):
     else:
         print("This makes no sense.")
 
+
 def check_if_user(target):
     if target == "self" or target == "myself" or target == "me" or target == player["name"]:
         return True
+
 
 def menu(exits, room_items, inv_items, coords):
     # Display menu
@@ -429,19 +432,21 @@ def combat_menu(monster):
             choice = True
         elif norminpt[0] == "use":
             if len(norminpt) > 1:
-                item = " ".join(norminpt[1:(norminpt.index("on"))])
-                target = " ".join(norminpt[(norminpt.index("on")) + 1:])
-                norminpt[1] = item
-                norminpt[2] = target
-                norminpt[3:] = []
-                if modified_amount(player["inventory"], norminpt[1], "check") and (
-                        norminpt[2] in monsters_dict or check_if_user(norminpt[2])):
-                    execute_use(items_dict[norminpt[1]], norminpt[2])
-                elif norminpt[1] in player["inventory"]:
-                    print("Use " + norminpt[1] + " on who?")
-                elif norminpt[2] in monsters_dict or check_if_user(norminpt[2]):
-                    print("Use what on " + norminpt[2] + "?")
-                    print(norminpt[1])
+                if "on" in norminpt:
+                    item = " ".join(norminpt[1:(norminpt.index("on"))])
+                    target = " ".join(norminpt[(norminpt.index("on")) + 1:])
+                    norminpt[1] = item
+                    norminpt[2] = target
+                    norminpt[3:] = []
+                    if modified_amount(player["inventory"], norminpt[1], "check") and (
+                            norminpt[2] in monsters_dict or check_if_user(norminpt[2])):
+                        execute_use(items_dict[norminpt[1]], monster)
+                        modified_amount(player["inventory"], norminpt[1], "remove")
+                        choice = True
+                    elif norminpt[1] in player["inventory"]:
+                        print("Use " + norminpt[1] + " on who?")
+                    elif norminpt[2] in monsters_dict or check_if_user(norminpt[2]):
+                        print("Use what on " + norminpt[2] + "?")
                 else:
                     print("Use what on who?")
             else:
