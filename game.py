@@ -487,6 +487,7 @@ def initiate_combat(manster):
            \   /| |  | | |  | |   \ \/  \/ /   | | | . ` | | | |                                               
             | | | |__| | |__| |    \  /\  /   _| |_| |\  |_|_|_|                                               
             |_|  \____/ \____/      \/  \/   |_____|_| \_(_|_|_)                         ''')
+                        global playing
                         playing = False
                         break
                     elif normalise_input(inpt) == "stay":
@@ -505,7 +506,6 @@ def initiate_combat(manster):
    \   /| |  | | |  | | | |  | || | |  __| | |  | |
     | | | |__| | |__| | | |__| || |_| |____| |__| |
     |_|  \____/ \____/  |_____/_____|______|_____/ """)
-            global playing
             playing = False
             return True
 
