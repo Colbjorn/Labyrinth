@@ -32,12 +32,14 @@ def choose_monster(room):
 
 
 def choose_item(room):
-    spawn = False
-    if random.randint(1, 2) == 1:
-        spawn = True
+    spawn = 0
+    if random.randint(1, 3) == 1:
+        spawn = 1
     if spawn:
         choice = random.choice(items_list)
-        room["items"].append(choice)
+        luck = random.randint(1, 100)
+        if luck >= choice["rarity"]:
+            room["items"].append([choice["id"], 1])
 
 
 def make_room(co_ordinates):
@@ -91,6 +93,7 @@ def make_room(co_ordinates):
         new_room["co-ordinates"] = co_ordinates
     new_room["number"] = len(rooms) + 1
     choose_monster(new_room)
+    choose_item(new_room)
     rooms[tuple(co_ordinates)] = new_room
 
 

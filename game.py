@@ -171,23 +171,26 @@ def execute_drop(item):
 
 def execute_describe(item):
     rooms[tuple(player["location"])]["entered"] = True
-    itm = items_dict[item]
-    is_there = False
-    for i in player["inventory"]:
-        if i[0] == item:
-            print(itm["name"].upper())
-            print("Type:", itm["type"])
-            print(itm["description"])
-            if itm["type"] == "Weapon":
-                print("Attack:", itm["damage"])
-                print("Damage bonus: x", itm["bonus"])
-            elif itm["type"] == "Armor":
-                print("Defense:", itm["defense"])
-            print("Cost:", itm["cost"], "gold.")
-            is_there = True
-            break
-    if not is_there:
-        print("Can't examine an item you can\'t look at!")
+    if item == "room":
+        print(rooms[tuple(player["location"])]["description"])
+    else:
+        itm = items_dict[item]
+        is_there = False
+        for i in player["inventory"]:
+            if i[0] == item:
+                print(itm["name"].upper())
+                print("Type:", itm["type"])
+                print(itm["description"])
+                if itm["type"] == "Weapon":
+                    print("Attack:", itm["damage"])
+                    print("Damage bonus: x", itm["bonus"])
+                elif itm["type"] == "Armor":
+                    print("Defense:", itm["defense"])
+                print("Cost:", itm["cost"], "gold.")
+                is_there = True
+                break
+        if not is_there:
+            print("Can't examine an item you can\'t look at!")
 
 
 def execute_status():
@@ -281,29 +284,29 @@ def execute_command(command):
             print("Go where?")
 
     elif command[0] == "take":
-        item = " ".join(command[1:])
-        command[1] = item
-        command[2:] = []
         if len(command) > 1:
+            item = " ".join(command[1:])
+            command[1] = item
+            command[2:] = []
             execute_take(command[1])
         else:
             print("Take what?")
 
     elif command[0] == "drop":
-        item = " ".join(command[1:])
-        command[1] = item
-        command[2:] = []
         if len(command) > 1:
+            item = " ".join(command[1:])
+            command[1] = item
+            command[2:] = []
             execute_drop(command[1])
         else:
             print("Drop what?")
             print_inventory_items(player["inventory"])
 
     elif command[0] == "describe":
-        item = " ".join(command[1:])
-        command[1] = item
-        command[2:] = []
         if len(command) > 1:
+            item = " ".join(command[1:])
+            command[1] = item
+            command[2:] = []
             execute_describe(command[1])
         else:
             print("Describe what?")
@@ -319,10 +322,10 @@ def execute_command(command):
         print_inventory_items(player["inventory"])
 
     elif command[0] == "equip":
-        item = " ".join(command[1:])
-        command[1] = item
-        command[2:] = []
         if len(command) > 1:
+            item = " ".join(command[1:])
+            command[1] = item
+            command[2:] = []
             execute_equip(command[1])
         else:
             print("Equip what?")
@@ -466,6 +469,21 @@ def initiate_combat(manster):
             player["gold"] += monster["gold"]
             print("Gained", monster["gold"], "gold!")
             rooms[tuple(player["location"])]["monster"] = ""
+            if monster["name"] == "Azgoth, Devourer of Worlds":
+                playing = False
+                print("Wait, you just killed Azgoth, the cause of all this madness!")
+                print("You're free!")
+                print('''   _____ ____  _   _  _____ _____         _______ _    _ _            _______ _____ ____  _   _  _____ 
+  / ____/ __ \| \ | |/ ____|  __ \     /\|__   __| |  | | |        /\|__   __|_   _/ __ \| \ | |/ ____|
+ | |   | |  | |  \| | |  __| |__) |   /  \  | |  | |  | | |       /  \  | |    | || |  | |  \| | (___  
+ | |   | |  | | . ` | | |_ |  _  /   / /\ \ | |  | |  | | |      / /\ \ | |    | || |  | | . ` |\___ \ 
+ | |___| |__| | |\  | |__| | | \ \  / ____ \| |  | |__| | |____ / ____ \| |   _| || |__| | |\  |____) |
+ _\_____\____/|_| \_|\_____|_|  \_\/_/____\_\_| _ \____/|______/_/    \_\_|  |_____\____/|_| \_|_____/ 
+ \ \   / / __ \| |  | | \ \        / /_   _| \ | | | | |                                               
+  \ \_/ / |  | | |  | |  \ \  /\  / /  | | |  \| | | | |                                               
+   \   /| |  | | |  | |   \ \/  \/ /   | | | . ` | | | |                                               
+    | | | |__| | |__| |    \  /\  /   _| |_| |\  |_|_|_|                                               
+    |_|  \____/ \____/      \/  \/   |_____|_| \_(_|_|_)                         ''')
             return True
         elif player["health"] <= 0:
             print("You have been slain!")
