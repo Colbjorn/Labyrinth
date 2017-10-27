@@ -102,6 +102,7 @@ no no no no no"''')
         modified_amount(player["inventory"], "lightsaber", "append")
         input()
 
+
 def red_cross():
     def skip():
         inpt = input("If you wish to skip the dialogue, SKIP now.")
@@ -132,7 +133,6 @@ def door():
             input()
             import sys
             sys.exit()
-            return True
     if not skip():
         print('''You didn't want to leave. You have a duty to save these lands but you just aren't strong enough
 your time in this place has been the worst time of your life. The monsters and terrifying and strong,

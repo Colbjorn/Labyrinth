@@ -10,14 +10,14 @@ goblin = {  # Sample monster subject to change.
 
     "level": 1,
 
-    "max health": 20,
+    "max health": 15,
     # Monsters will always set their (current) health equal to the max at the beginning of combat.
 
     "attack": 0,
 
     "status effects": [],
 
-    "attacks": [  # TODO Nerf this shit it's 2stronk4me
+    "attacks": [
         attacks.scratch_attack,
         attacks.doubleslap_attack,
     ],
@@ -39,7 +39,7 @@ skeleton = {
 
     "level": 1,
 
-    "max health": 10,
+    "max health": 25,
 
     "attack": 2,
 
@@ -90,7 +90,7 @@ slime = {
         ["knackered sword", 1]
     ],
 
-    "experience": 10,
+    "experience": 5,
 
     "gold": 4,
 }
@@ -168,7 +168,7 @@ ogre = {
 
     "level": 2,
 
-    "max health": 20,
+    "max health": 30,
 
     "attack": 5,
 
@@ -200,7 +200,7 @@ evil_unicorn = {
 
     "level": 3,
 
-    "max health": 30,
+    "max health": 50,
 
     "attack": 5,
 
@@ -231,7 +231,7 @@ gang_of_bandits = {
 
     "level": 3,
 
-    "max health": 45,
+    "max health": 55,
 
     "attack": 6,
 
@@ -265,7 +265,7 @@ ninja = {
 
     "level": 4,
 
-    "max health": 50,
+    "max health": 65,
 
     "attack": 0.6,
 
@@ -301,7 +301,7 @@ devil_cat = {
 
     "level": 6,
 
-    "max health": 66,
+    "max health": 166,
 
     "attack": 6,
 
@@ -335,7 +335,7 @@ dragon = {
 
     "level": 5,
 
-    "max health": 100,
+    "max health": 150,
 
     "attack": 9,
 
@@ -405,7 +405,7 @@ azgoth = {
     "description": """The 37-dimensional being that started it all is before you. It almost looks serene.
     You cannot understand its very existence. All you know is the motivation within you to end this once and for all.""",
 
-    "level": 20,
+    "level": 15,
 
     "max health": 500,
 
@@ -417,6 +417,7 @@ azgoth = {
         attacks.stomp_attack,
         attacks.spit_fire_attack,
         attacks.summon_attack,
+        attacks.fiveslap_attack,
         attacks.qte_cosmic_slap,
         attacks.qte_kamehameha
     ],
@@ -452,7 +453,9 @@ monsters = [goblin,
 
             dragon,
 
-            giant_dragon]
+            giant_dragon,
+
+            azgoth]
 
 
 monsters_dict = {
