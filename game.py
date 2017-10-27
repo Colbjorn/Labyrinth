@@ -470,23 +470,35 @@ def initiate_combat(manster):
             print("Gained", monster["gold"], "gold!")
             rooms[tuple(player["location"])]["monster"] = ""
             if monster["name"] == "Azgoth, Devourer of Worlds":
-                playing = False
-                print("Wait, you just killed Azgoth, the cause of all this madness!")
-                print("You're free!")
-                print('''   _____ ____  _   _  _____ _____         _______ _    _ _            _______ _____ ____  _   _  _____ 
-  / ____/ __ \| \ | |/ ____|  __ \     /\|__   __| |  | | |        /\|__   __|_   _/ __ \| \ | |/ ____|
- | |   | |  | |  \| | |  __| |__) |   /  \  | |  | |  | | |       /  \  | |    | || |  | |  \| | (___  
- | |   | |  | | . ` | | |_ |  _  /   / /\ \ | |  | |  | | |      / /\ \ | |    | || |  | | . ` |\___ \ 
- | |___| |__| | |\  | |__| | | \ \  / ____ \| |  | |__| | |____ / ____ \| |   _| || |__| | |\  |____) |
- _\_____\____/|_| \_|\_____|_|  \_\/_/____\_\_| _ \____/|______/_/    \_\_|  |_____\____/|_| \_|_____/ 
- \ \   / / __ \| |  | | \ \        / /_   _| \ | | | | |                                               
-  \ \_/ / |  | | |  | |  \ \  /\  / /  | | |  \| | | | |                                               
-   \   /| |  | | |  | |   \ \/  \/ /   | | | . ` | | | |                                               
-    | | | |__| | |__| |    \  /\  /   _| |_| |\  |_|_|_|                                               
-    |_|  \____/ \____/      \/  \/   |_____|_| \_(_|_|_)                         ''')
+                print("Wait, you just killed Azgoth, the cause of all this madness! You can escape!")
+                inpt = input("Do you want to STAY, or ESCAPE? If you stay you may have to face Azgoth again!")
+                done = False
+                while not done:
+                    if normalise_input(inpt) == "escape":
+                        print("You escape. You're free!")
+                        print('''   _____ ____  _   _  _____ _____         _______ _    _ _            _______ _____ ____  _   _  _____ 
+          / ____/ __ \| \ | |/ ____|  __ \     /\|__   __| |  | | |        /\|__   __|_   _/ __ \| \ | |/ ____|
+         | |   | |  | |  \| | |  __| |__) |   /  \  | |  | |  | | |       /  \  | |    | || |  | |  \| | (___  
+         | |   | |  | | . ` | | |_ |  _  /   / /\ \ | |  | |  | | |      / /\ \ | |    | || |  | | . ` |\___ \ 
+         | |___| |__| | |\  | |__| | | \ \  / ____ \| |  | |__| | |____ / ____ \| |   _| || |__| | |\  |____) |
+         _\_____\____/|_| \_|\_____|_|  \_\/_/____\_\_| _ \____/|______/_/    \_\_|  |_____\____/|_| \_|_____/ 
+         \ \   / / __ \| |  | | \ \        / /_   _| \ | | | | |                                               
+          \ \_/ / |  | | |  | |  \ \  /\  / /  | | |  \| | | | |                                               
+           \   /| |  | | |  | |   \ \/  \/ /   | | | . ` | | | |                                               
+            | | | |__| | |__| |    \  /\  /   _| |_| |\  |_|_|_|                                               
+            |_|  \____/ \____/      \/  \/   |_____|_| \_(_|_|_)                         ''')
+                        playing = False
+                        break
+                    elif normalise_input(inpt) == "stay":
+                        print("You choose to stay.")
+                        break
+                    else:
+                        print("I don't understand.")
             return True
         elif player["health"] <= 0:
             print("You have been slain!")
+            print("Level reached:", player["level"])
+            print("Room reached:", rooms[tuple(player["location"])]["number"])
             print(""" __     ______  _    _   _____ _____ ______ _____  
  \ \   / / __ \| |  | | |  __ \_   _|  ____|  __ \ 
   \ \_/ / |  | | |  | | | |  | || | | |__  | |  | |
